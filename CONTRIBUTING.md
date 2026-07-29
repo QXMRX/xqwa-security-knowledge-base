@@ -66,6 +66,8 @@ python -m pip install -r requirements.txt
 
 ## Pull Request 审核要求
 
+提交 Pull Request 时，请完整填写 `.github/pull_request_template.md` 中的字段。模板不是形式主义，它帮助审核者快速判断这次修改是否安全、是否可运行、是否符合教学目标。
+
 维护者审核时重点关注：
 
 - 内容是否符合教学目标。
@@ -76,6 +78,27 @@ python -m pip install -r requirements.txt
 - 是否需要补充练习题或参考资料。
 
 AI 可以辅助发现问题和提出建议，但不得自动批准或合并 Pull Request。
+
+## 审核结论
+
+审核者应使用以下三类结论：
+
+- `Approve`：内容清晰，CI 通过，没有阻塞问题，可以合并。
+- `Comment`：有建议或小问题，但不阻塞合并。
+- `Request changes`：存在安全边界、可运行性、结构完整性或敏感信息风险，必须修改后再合并。
+
+任何包含真实密钥、未授权公网攻击步骤、不可控危险命令的 Pull Request，都必须选择 `Request changes`。
+
+## 合并前检查
+
+维护者合并前应确认：
+
+- Pull Request 模板已填写。
+- 至少一名维护者已审核。
+- `Basic Checks` 已通过。
+- 没有未解决的阻塞评论。
+- 变更范围和 Pull Request 标题一致。
+- 不包含真实密钥或未经授权的测试目标。
 
 ## 不接受的内容
 

@@ -14,7 +14,7 @@
 
 `scripts/` 存放本地和 CI 共用的自动检查脚本。脚本应保持模块化，方便后续逐步增加 metadata 检查、Markdown 检查、危险内容检查和 AI Review 调用。
 
-`.github/workflows/` 存放 GitHub Actions。第一版只执行基础检查，不接入 AI，不需要写权限。
+`.github/` 存放 GitHub 协作配置，包括 Pull Request 模板、CODEOWNERS 和 GitHub Actions。当前 workflow 只执行基础检查，不接入 AI，不需要写权限。
 
 ## 为什么不拆得更细
 
@@ -30,3 +30,4 @@
 - `scripts/check_security_risks.py`：检查危险命令和敏感信息。
 - `scripts/build_rag_index.py`：为问答系统生成索引。
 - `.github/workflows/deploy-docs.yml`：部署 MkDocs 到 GitHub Pages。
+- `.github/workflows/ai-review.yml`：在人工审核前生成 AI 建议。

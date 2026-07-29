@@ -27,6 +27,12 @@
 - 不得自动执行危险脚本。
 - 不得把模拟示例伪装成真实测试结果。
 
+## Pull Request 审核中的 AI 边界
+
+AI 可以协助维护者阅读差异、指出风险、建议修改文案和补充测试命令。AI 输出应作为 review comment 或建议清单，由人工维护者判断是否采纳。
+
+AI 不得把自己的检查结果表述为人工批准，也不得绕过 Pull Request 模板、CODEOWNERS、分支保护或 GitHub Actions。
+
 ## 安全边界
 
 允许的实验环境：
@@ -50,6 +56,8 @@
 - `templates/`：内容模板和审核模板。
 - `scripts/`：本地和 CI 共用脚本。
 - `.github/workflows/`：自动检查流程。
+- `.github/pull_request_template.md`：Pull Request 提交模板。
+- `.github/CODEOWNERS`：默认审核责任人配置。
 
 ## 必须优先运行的检查
 
