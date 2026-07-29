@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 from common import Finding, iter_files, print_findings, read_utf8, repo_root
 
 
-TEXT_SUFFIXES = {".md", ".py", ".yml", ".yaml", ".txt"}
+TEXT_SUFFIXES = {".html", ".md", ".py", ".yml", ".yaml", ".txt"}
 
 SECRET_PATTERNS = {
     "GitHub token": re.compile(r"\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}\b"),

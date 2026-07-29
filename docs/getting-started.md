@@ -22,6 +22,8 @@ updated_at: 2026-07-29
 
 ## 本地预览
 
+MkDocs 严格构建预览：
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -30,6 +32,15 @@ mkdocs serve
 ```
 
 启动后访问 `http://127.0.0.1:8000` 查看文档网站。
+
+Docsify Pages 界面预览：
+
+```bash
+python scripts/build_pages_site.py --output /tmp/xqwa-pages-preview
+python3 -m http.server 3000 --directory /tmp/xqwa-pages-preview
+```
+
+启动后访问 `http://127.0.0.1:3000`。
 
 ## 提交内容前
 

@@ -8,19 +8,21 @@ from pathlib import Path
 
 
 CHECKS = (
-    ("Markdown structure", "check_markdown.py"),
-    ("Documentation metadata", "check_metadata.py"),
-    ("Security content", "check_security_content.py"),
+    ("Markdown structure", ["check_markdown.py"]),
+    ("Documentation metadata", ["check_metadata.py"]),
+    ("Security content", ["check_security_content.py"]),
+    ("Docsify Pages assembly", ["build_pages_site.py", "--output", "/tmp/xqwa-pages-check"]),
 )
 
 
 def main() -> int:
     scripts_dir = Path(__file__).resolve().parent
 
-    for label, script_name in CHECKS:
+    for label, command in CHECKS:
         print(f"==> {label}", flush=True)
+        script_name, *args = command
         result = subprocess.run(
-            [sys.executable, str(scripts_dir / script_name)],
+            [sys.executable, str(scripts_dir / script_name), *args],
             check=False,
         )
         if result.returncode != 0:

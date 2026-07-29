@@ -7,6 +7,9 @@ import sys
 from common import Finding, iter_markdown_files, print_findings, read_utf8, repo_root
 
 
+DOCSIFY_CONTROL_FILES = {"_sidebar.md", "_navbar.md", "_coverpage.md"}
+
+
 def strip_front_matter(text: str) -> str:
     """Remove simple YAML front matter before checking the first heading."""
     lines = text.splitlines()
@@ -32,6 +35,9 @@ def has_top_level_heading(text: str) -> bool:
 
 def check_file(path) -> list[Finding]:
     findings: list[Finding] = []
+    if path.name in DOCSIFY_CONTROL_FILES:
+        return findings
+
     text, read_error = read_utf8(path)
     if read_error:
         return [read_error]
