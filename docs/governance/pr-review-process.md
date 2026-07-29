@@ -1,3 +1,12 @@
+---
+title: Pull Request 审核流程
+audience: 贡献者和审核者
+status: stable
+owner: QXMRX
+review_cycle: quarterly
+updated_at: 2026-07-29
+---
+
 # Pull Request 审核流程
 
 本阶段建立 Pull Request 审核流程。目标是让每一次资料修改都能被人工审核、被自动检查、被清晰追踪。
@@ -24,7 +33,7 @@ Pull Request 是本项目唯一的正式变更入口。它承担三件事：
 
 ## 调用关系
 
-贡献者创建 Pull Request 后，GitHub 会自动加载 `.github/pull_request_template.md`。Pull Request 指向 `main` 时，`Basic Checks` workflow 会运行 Markdown 检查和 MkDocs 构建。
+贡献者创建 Pull Request 后，GitHub 会自动加载 `.github/pull_request_template.md`。Pull Request 指向 `main` 时，`Basic Checks` workflow 会运行 `python scripts/check_all.py` 和 MkDocs 构建。
 
 如果仓库启用了 CODEOWNERS 和分支保护，GitHub 会根据 `.github/CODEOWNERS` 请求默认维护者审核。维护者审核时可以参考 `templates/review-checklist.md`，并在 GitHub Review 中选择 `Approve`、`Comment` 或 `Request changes`。
 
@@ -67,7 +76,7 @@ AI 只负责辅助发现问题和提出建议，不负责批准或合并。
 贡献者和审核者都可以运行：
 
 ```bash
-python scripts/check_markdown.py
+python scripts/check_all.py
 mkdocs build --strict
 ```
 
@@ -81,16 +90,15 @@ mkdocs build --strict
 2. `templates/review-checklist.md`
 3. 本页面
 
-如果某类问题反复出现，应先把规则写进模板或检查清单。只有当规则稳定、误报可控时，才进入第三阶段，把它升级为 GitHub Actions 自动检查。
+如果某类问题反复出现，应先把规则写进模板或检查清单。只有当规则稳定、误报可控时，才把它升级为 GitHub Actions 自动检查。
 
 ## 后续扩展
 
-第三阶段可以增加更细的自动检查，例如：
+当前自动检查已经覆盖：
 
-- metadata 必填字段检查。
-- Markdown 链接检查。
-- 敏感信息扫描增强。
-- 危险命令规则拆分。
-- Pull Request 标题规范检查。
+- Markdown 基础结构检查。
+- `docs/` 页面 metadata 必填字段检查。
+- 敏感信息和高风险命令检查。
+- 攻击工具示例中的公网目标检查。
 
-第四阶段再接入 Codex AI Review，但 AI Review 仍然只能提出建议，不自动批准 Pull Request。
+后续可以继续增加 Markdown 链接检查、Pull Request 标题规范检查和更细的实验 metadata 检查。下一阶段再接入 Codex AI Review，但 AI Review 仍然只能提出建议，不自动批准 Pull Request。

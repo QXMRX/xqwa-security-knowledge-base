@@ -1,3 +1,12 @@
+---
+title: XQWA Security Knowledge Base
+audience: 全体成员
+status: stable
+owner: QXMRX
+review_cycle: quarterly
+updated_at: 2026-07-29
+---
+
 # XQWA Security Knowledge Base
 
 欢迎来到 XQWA 网络安全社团教学资料库。
@@ -18,6 +27,7 @@
 - 安全边界说明。
 - Pull Request 审核流程。
 - 分支保护建议。
+- 自动检查说明。
 - 许可证建议。
 
 后续阶段会逐步加入课程模块、实验模板、练习题、AI Review 和自动部署流程。
@@ -27,7 +37,7 @@
 所有内容修改必须通过 Pull Request。提交前请运行：
 
 ```bash
-python scripts/check_markdown.py
+python scripts/check_all.py
 mkdocs build --strict
 ```
 

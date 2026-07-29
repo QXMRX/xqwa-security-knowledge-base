@@ -52,7 +52,7 @@ Markdown 文档应满足：
 提交前请运行：
 
 ```bash
-python scripts/check_markdown.py
+python scripts/check_all.py
 mkdocs build --strict
 ```
 
@@ -110,4 +110,4 @@ AI 可以辅助发现问题和提出建议，但不得自动批准或合并 Pull
 
 ## 维护建议
 
-如果某个主题不断扩展，优先拆成多个小文档，而不是维护一个很长的文件。后续可以逐步引入 metadata、内容模板、AI Review 和 RAG 索引，但第一阶段只要求基础结构可运行。
+如果某个主题不断扩展，优先拆成多个小文档，而不是维护一个很长的文件。后续可以逐步引入更细的内容模板、AI Review 和 RAG 索引，但每一步都必须保持基础结构可运行。
