@@ -63,10 +63,13 @@ AI 不得把自己的检查结果表述为人工批准，也不得绕过 Pull Re
 
 ```bash
 python scripts/check_all.py
+python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
 mkdocs build --strict
 ```
 
 如果修改 Python 脚本，还应至少运行对应脚本本身，确保退出码符合预期。
+
+真实 AI Review 只能由维护者在 GitHub Actions 中手动触发，或在本地显式提供 `OPENAI_API_KEY` 后运行。AI Review 输出只是建议清单，不是 approve 结论。
 
 ## 扩展原则
 

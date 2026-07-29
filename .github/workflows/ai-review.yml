@@ -1,0 +1,66 @@
+name: AI Review
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull Request number to review
+        required: true
+        type: string
+      dry_run:
+        description: Build the prompt without calling the OpenAI API
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  ai-review:
+    name: Build AI review report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile review script
+        run: python -m compileall scripts
+
+      - name: Build AI review report
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_REVIEW_MODEL: ${{ vars.OPENAI_REVIEW_MODEL }}
+        run: |
+          args=(
+            --repo "$GITHUB_REPOSITORY"
+            --pr "${{ inputs.pr_number }}"
+            --output ai-review-report.md
+          )
+
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            args+=(--dry-run)
+          fi
+
+          python scripts/ai_review.py "${args[@]}"
+
+      - name: Add report to workflow summary
+        run: cat ai-review-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-review-report
+          path: ai-review-report.md

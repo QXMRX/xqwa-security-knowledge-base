@@ -20,6 +20,7 @@ nav:
       - Pull Request 审核流程: governance/pr-review-process.md
       - 分支保护建议: governance/branch-protection.md
       - 自动检查: governance/automated-checks.md
+      - AI Review: governance/ai-review.md
       - 许可证建议: governance/license.md
 
 markdown_extensions:

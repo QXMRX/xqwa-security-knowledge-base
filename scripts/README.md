@@ -8,12 +8,19 @@
 - `check_markdown.py`：检查 Markdown 文件是否为空、是否有一级标题、是否存在行尾空格。
 - `check_metadata.py`：检查 `docs/` 页面是否包含必需维护元数据。
 - `check_security_content.py`：检查疑似真实密钥、高风险命令和指向公网目标的攻击工具示例。
+- `ai_review.py`：构造 AI Review 上下文，并在提供密钥时调用 OpenAI API 生成审核报告。
 - `common.py`：共享文件遍历、UTF-8 读取和检查结果输出逻辑。
 
 运行方式：
 
 ```bash
 python scripts/check_all.py
+```
+
+AI Review dry-run：
+
+```bash
+python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
 ```
 
 后续扩展时应保持模块化，不要把 metadata 检查、危险内容检查、AI Review 和 RAG 索引全部塞进一个脚本。

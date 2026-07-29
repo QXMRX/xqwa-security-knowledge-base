@@ -2,7 +2,7 @@
 
 面向网络安全社团的教学资料库，用于沉淀课程讲义、实验说明、练习题、社团协作规范和后续 AI 辅助审核能力。
 
-当前仓库已经建立项目初始化、Pull Request 审核流程和模块化自动检查的基础能力。后续会在这个基础上逐步增加 AI Review、网站部署和检索问答系统。
+当前仓库已经建立项目初始化、Pull Request 审核流程、模块化自动检查和手动 AI Review 的基础能力。后续会在这个基础上逐步增加网站部署和检索问答系统。
 
 ## 当前已建立能力
 
@@ -11,14 +11,17 @@
 - 贡献规范和 AI 协作边界。
 - Pull Request 模板和人工审核流程。
 - CODEOWNERS 默认审核责任配置。
-- 模块化自动检查，不包含 AI 审核。
-- 为后续 MkDocs Pages 部署、Codex Review、RAG 问答系统预留扩展点。
+- 模块化自动检查。
+- 手动触发的 AI Review 报告流程。
+- 为后续 MkDocs Pages 部署、RAG 问答系统预留扩展点。
 
 ## 为什么这样设计
 
 项目优先采用简单、稳定、低维护成本的结构。Markdown 负责资料内容，MkDocs Material 负责网站构建，Python 脚本负责本地和 CI 中复用的检查逻辑，GitHub Actions 只负责自动执行基础检查。
 
 AI 在本项目中只作为辅助审核者，不自动批准 Pull Request，不自动合并主分支，不替代教学负责人。
+
+AI Review 通过手动 GitHub Actions 工作流生成报告。它只读取 Pull Request 差异，不自动评论、不 approve、不 merge。
 
 ## 仓库结构
 
@@ -44,6 +47,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python scripts/check_all.py
+python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
 mkdocs build --strict
 mkdocs serve
 ```
@@ -58,8 +62,9 @@ mkdocs serve
 2. 在分支中修改 Markdown、脚本或配置。
 3. 本地运行 `python scripts/check_all.py` 和 `mkdocs build --strict`。
 4. 按 Pull Request 模板填写变更说明和自检结果。
-5. 等待人工审核和 CI 通过。
-6. 由维护者合并。
+5. 如需辅助审核，由维护者手动运行 AI Review。
+6. 等待人工审核和 CI 通过。
+7. 由维护者合并。
 
 禁止直接向 `main` 推送内容。仓库维护者需要在 GitHub 中开启分支保护规则。
 
@@ -80,8 +85,7 @@ mkdocs serve
 
 ## 后续里程碑
 
-1. Codex AI Review。
-2. MkDocs 自动部署到 GitHub Pages。
-3. AI 检索系统。
-4. RAG 问答平台。
-5. 后台管理系统。
+1. MkDocs 自动部署到 GitHub Pages。
+2. AI 检索系统。
+3. RAG 问答平台。
+4. 后台管理系统。
