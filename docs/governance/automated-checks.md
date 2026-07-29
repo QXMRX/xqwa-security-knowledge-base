@@ -32,10 +32,12 @@ updated_at: 2026-07-29
 - `scripts/check_markdown.py`：Markdown 结构检查。
 - `scripts/check_metadata.py`：文档 metadata 检查。
 - `scripts/check_security_content.py`：安全内容检查。
+- `scripts/build_pages_site.py`：Docsify Pages 静态目录组装。
 - `scripts/ai_review.py`：手动 AI Review 报告生成脚本，不属于默认阻塞检查。
 - `scripts/common.py`：共享工具函数。
 - `.github/workflows/basic-checks.yml`：GitHub Actions 工作流。
 - `.github/workflows/ai-review.yml`：手动触发的 AI Review 工作流。
+- `.github/workflows/deploy-pages.yml`：部署 Docsify Pages 的工作流。
 
 ## 调用关系
 
@@ -54,9 +56,11 @@ python scripts/check_all.py
 mkdocs build --strict
 ```
 
-`check_all.py` 会按顺序调用 Markdown、metadata 和安全内容检查。任何一个脚本失败，整个检查失败。
+`check_all.py` 会按顺序调用 Markdown、metadata、安全内容检查和 Docsify Pages 组装检查。任何一个脚本失败，整个检查失败。
 
 AI Review 不在 `check_all.py` 中自动运行。它需要维护者手动触发，用于生成建议报告，而不是替代基础检查或人工审核。
+
+Pages 部署不在 Pull Request 中发布线上站点。合并到 `main` 后，`Deploy Pages` workflow 会将 `docs/` 与 `docsify/` 组装为静态目录并部署到 GitHub Pages。
 
 ## Metadata 规则
 

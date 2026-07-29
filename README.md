@@ -13,11 +13,12 @@
 - CODEOWNERS 默认审核责任配置。
 - 模块化自动检查。
 - 手动触发的 DeepSeek AI Review 报告流程。
-- 为后续 MkDocs Pages 部署、RAG 问答系统预留扩展点。
+- Docsify GitHub Pages 部署流程。
+- 为后续 RAG 问答系统预留扩展点。
 
 ## 为什么这样设计
 
-项目优先采用简单、稳定、低维护成本的结构。Markdown 负责资料内容，MkDocs Material 负责网站构建，Python 脚本负责本地和 CI 中复用的检查逻辑，GitHub Actions 只负责自动执行基础检查。
+项目优先采用简单、稳定、低维护成本的结构。Markdown 负责资料内容，Docsify 负责 GitHub Pages 阅读界面，MkDocs Material 保留为严格构建检查，Python 脚本负责本地和 CI 中复用的检查逻辑，GitHub Actions 只负责自动执行基础检查和 Pages 部署。
 
 AI 在本项目中只作为辅助审核者，不自动批准 Pull Request，不自动合并主分支，不替代教学负责人。
 
@@ -48,11 +49,20 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python scripts/check_all.py
 python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
+python scripts/build_pages_site.py --output /tmp/xqwa-pages-preview
 mkdocs build --strict
 mkdocs serve
 ```
 
 本地预览启动后，访问 `http://127.0.0.1:8000`。
+
+如需预览 GitHub Pages 使用的 Docsify 界面：
+
+```bash
+python3 -m http.server 3000 --directory /tmp/xqwa-pages-preview
+```
+
+启动后访问 `http://127.0.0.1:3000`。
 
 ## 协作流程
 
@@ -85,7 +95,6 @@ mkdocs serve
 
 ## 后续里程碑
 
-1. MkDocs 自动部署到 GitHub Pages。
-2. AI 检索系统。
-3. RAG 问答平台。
-4. 后台管理系统。
+1. AI 检索系统。
+2. RAG 问答平台。
+3. 后台管理系统。

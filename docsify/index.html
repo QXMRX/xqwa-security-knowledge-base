@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="面向网络安全社团的教学资料库">
+    <title>XQWA Security Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
+    <style>
+      :root {
+        --theme-color: #2563eb;
+        --heading-color: #111827;
+        --base-color: #374151;
+        --sidebar-background: #f8fafc;
+        --sidebar-border-color: #dbe3ef;
+        --link-color: #0f766e;
+        --code-inline-background: #eef2ff;
+        --code-theme-background: #111827;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--sidebar-border-color);
+      }
+
+      .app-name-link {
+        color: var(--heading-color);
+        font-weight: 700;
+      }
+
+      .markdown-section {
+        max-width: 920px;
+      }
+
+      .markdown-section h1,
+      .markdown-section h2,
+      .markdown-section h3 {
+        color: var(--heading-color);
+        letter-spacing: 0;
+      }
+
+      .markdown-section a {
+        color: var(--link-color);
+      }
+
+      .search input {
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body class="loading">
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: 'XQWA Security Knowledge Base',
+        repo: 'QXMRX/xqwa-security-knowledge-base',
+        homepage: 'index.md',
+        loadSidebar: true,
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md'
+        },
+        auto2top: true,
+        maxLevel: 4,
+        subMaxLevel: 3,
+        search: {
+          depth: 4,
+          maxAge: 86400000,
+          noData: '没有找到结果',
+          paths: 'auto',
+          placeholder: '搜索资料'
+        },
+        plugins: [
+          function stripFrontMatter(hook) {
+            hook.beforeEach(function(content) {
+              return content.replace(/^---\n[\s\S]*?\n---\n?/, '');
+            });
+          }
+        ]
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.min.js"></script>
+  </body>
+</html>

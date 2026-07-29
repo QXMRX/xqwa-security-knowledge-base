@@ -64,6 +64,7 @@ AI 不得把自己的检查结果表述为人工批准，也不得绕过 Pull Re
 ```bash
 python scripts/check_all.py
 python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
+python scripts/build_pages_site.py --output /tmp/xqwa-pages-check
 mkdocs build --strict
 ```
 
