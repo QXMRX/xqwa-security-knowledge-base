@@ -1,3 +1,12 @@
+---
+title: 安全边界
+audience: 全体成员
+status: stable
+owner: QXMRX
+review_cycle: quarterly
+updated_at: 2026-07-29
+---
+
 # 安全边界
 
 网络安全教学必须建立清晰边界。本仓库只接受合法、可控、可复现的教学内容。

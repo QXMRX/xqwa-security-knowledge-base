@@ -62,7 +62,7 @@ AI 不得把自己的检查结果表述为人工批准，也不得绕过 Pull Re
 ## 必须优先运行的检查
 
 ```bash
-python scripts/check_markdown.py
+python scripts/check_all.py
 mkdocs build --strict
 ```
 

@@ -31,7 +31,7 @@
 请填写已运行的命令：
 
 ```bash
-python scripts/check_markdown.py
+python scripts/check_all.py
 mkdocs build --strict
 ```
 

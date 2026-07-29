@@ -1,6 +1,15 @@
+---
+title: 分支保护建议
+audience: 仓库管理员
+status: review
+owner: QXMRX
+review_cycle: quarterly
+updated_at: 2026-07-29
+---
+
 # 分支保护建议
 
-分支保护是防止误操作进入 `main` 的关键设置。第一阶段已经建立基础检查，第二阶段建议在 GitHub 仓库中启用分支保护。
+分支保护是防止误操作进入 `main` 的关键设置。仓库已经建立基础检查和 Pull Request 审核流程，建议在 GitHub 仓库中启用分支保护。
 
 ## 用途
 
@@ -62,3 +71,5 @@ Settings -> Branches -> Branch protection rules -> Add rule
 ## 如何维护
 
 每次新增 GitHub Actions 检查后，都应评估是否把对应 job 加入 required status checks。不要一次性把不稳定检查设为必需，否则会阻塞正常教学资料更新。
+
+当前 `Markdown and MkDocs` job 已包含 `python scripts/check_all.py` 和 `mkdocs build --strict`，因此它既覆盖仓库质量检查，也覆盖文档站点构建。

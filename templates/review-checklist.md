@@ -25,7 +25,7 @@
 
 ## 可运行性
 
-- `python scripts/check_markdown.py` 是否通过。
+- `python scripts/check_all.py` 是否通过。
 - `mkdocs build --strict` 是否通过。
 - GitHub Actions 中 `Basic Checks` 是否通过。
 - 如果包含实验，步骤是否足够复现。

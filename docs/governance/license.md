@@ -1,3 +1,12 @@
+---
+title: 许可证建议
+audience: 维护者
+status: review
+owner: QXMRX
+review_cycle: quarterly
+updated_at: 2026-07-29
+---
+
 # 许可证建议
 
 当前仓库已有 MIT License。MIT 适合代码、脚本和配置文件，简单、宽松、便于复用。
@@ -13,7 +22,7 @@
 
 ## 推荐方案
 
-第一阶段暂时保留 MIT License，避免在初始化阶段引入复杂授权讨论。第二阶段或第三阶段可以由维护者确认是否增加单独的教学内容许可证，并在 README 中明确：
+当前暂时保留 MIT License，避免在早期维护阶段引入复杂授权讨论。后续可以由维护者确认是否增加单独的教学内容许可证，并在 README 中明确：
 
 - `scripts/`、配置文件和自动化代码适用 MIT。
 - `docs/`、`labs/`、`exercises/`、`templates/` 中的教学内容适用社团选定的内容许可证。
