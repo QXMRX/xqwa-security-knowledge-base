@@ -1,0 +1,29 @@
+site_name: XQWA Security Knowledge Base
+site_description: 面向网络安全社团的教学资料库
+repo_url: https://github.com/QXMRX/xqwa-security-knowledge-base
+repo_name: QXMRX/xqwa-security-knowledge-base
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+nav:
+  - 首页: index.md
+  - 新成员入门: getting-started.md
+  - 项目治理:
+      - 目录设计: governance/repository-structure.md
+      - 安全边界: governance/safety.md
+      - 许可证建议: governance/license.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
