@@ -16,7 +16,7 @@ TEXT_SUFFIXES = {".md", ".py", ".yml", ".yaml", ".txt"}
 SECRET_PATTERNS = {
     "GitHub token": re.compile(r"\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}\b"),
     "GitHub fine-grained token": re.compile(r"\bgithub_pat_[A-Za-z0-9_]{20,}\b"),
-    "OpenAI API key": re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
+    "API key": re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
     "AWS access key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
     "Slack token": re.compile(r"\bxox[baprs]-[A-Za-z0-9-]{20,}\b"),
     "private key": re.compile(

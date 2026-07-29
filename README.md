@@ -12,7 +12,7 @@
 - Pull Request 模板和人工审核流程。
 - CODEOWNERS 默认审核责任配置。
 - 模块化自动检查。
-- 手动触发的 AI Review 报告流程。
+- 手动触发的 DeepSeek AI Review 报告流程。
 - 为后续 MkDocs Pages 部署、RAG 问答系统预留扩展点。
 
 ## 为什么这样设计
@@ -21,7 +21,7 @@
 
 AI 在本项目中只作为辅助审核者，不自动批准 Pull Request，不自动合并主分支，不替代教学负责人。
 
-AI Review 通过手动 GitHub Actions 工作流生成报告。它只读取 Pull Request 差异，不自动评论、不 approve、不 merge。
+AI Review 通过手动 GitHub Actions 工作流调用 DeepSeek API 生成报告。它只读取 Pull Request 差异，不自动评论、不 approve、不 merge。
 
 ## 仓库结构
 

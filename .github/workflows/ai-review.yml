@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       dry_run:
-        description: Build the prompt without calling the OpenAI API
+        description: Build the prompt without calling the DeepSeek API
         required: true
         default: "false"
         type: choice
@@ -41,8 +41,12 @@ jobs:
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_REVIEW_MODEL: ${{ vars.OPENAI_REVIEW_MODEL }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_REVIEW_MODEL: ${{ vars.DEEPSEEK_REVIEW_MODEL }}
+          DEEPSEEK_REVIEW_THINKING: ${{ vars.DEEPSEEK_REVIEW_THINKING }}
+          DEEPSEEK_REVIEW_REASONING_EFFORT: ${{ vars.DEEPSEEK_REVIEW_REASONING_EFFORT }}
+          DEEPSEEK_REVIEW_MAX_TOKENS: ${{ vars.DEEPSEEK_REVIEW_MAX_TOKENS }}
+          DEEPSEEK_REVIEW_TEMPERATURE: ${{ vars.DEEPSEEK_REVIEW_TEMPERATURE }}
         run: |
           args=(
             --repo "$GITHUB_REPOSITORY"

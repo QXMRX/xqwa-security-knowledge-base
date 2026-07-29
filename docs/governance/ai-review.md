@@ -39,8 +39,12 @@ AI Review 的输出是建议清单。最终结论仍由维护者给出。
 
 仓库维护者在 GitHub 中配置：
 
-- Secret：`OPENAI_API_KEY`，用于调用 OpenAI API。
-- Variable：`OPENAI_REVIEW_MODEL`，可选；默认使用 `gpt-5.6`。
+- Secret：`DEEPSEEK_API_KEY`，用于调用 DeepSeek API。
+- Variable：`DEEPSEEK_REVIEW_MODEL`，可选；默认使用 `deepseek-v4-pro`。
+- Variable：`DEEPSEEK_REVIEW_THINKING`，可选；默认使用 `disabled`。
+- Variable：`DEEPSEEK_REVIEW_REASONING_EFFORT`，可选；可设置为 `high` 或 `max`。
+- Variable：`DEEPSEEK_REVIEW_MAX_TOKENS`，可选；默认使用 `3000`。
+- Variable：`DEEPSEEK_REVIEW_TEMPERATURE`，可选。
 
 不要把 API Key 写入仓库、文档、Issue、Pull Request 或日志。
 
@@ -69,7 +73,7 @@ AI Review 的输出是建议清单。最终结论仍由维护者给出。
 python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
 ```
 
-这个命令不会调用 OpenAI API，也不需要密钥。
+这个命令不会调用 DeepSeek API，也不需要密钥。
 
 ## 本地审核 Pull Request
 
@@ -77,18 +81,20 @@ python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review
 
 ```bash
 GITHUB_TOKEN=your-github-token \
-OPENAI_API_KEY=your-openai-api-key \
+DEEPSEEK_API_KEY=your-new-deepseek-api-key \
 python scripts/ai_review.py \
   --repo QXMRX/xqwa-security-knowledge-base \
   --pr 1 \
   --output ai-review-report.md
 ```
 
-如果账号没有默认模型权限，可以设置：
+如果需要调整模型，可以设置：
 
 ```bash
-OPENAI_REVIEW_MODEL=gpt-5.6
+DEEPSEEK_REVIEW_MODEL=deepseek-v4-pro
 ```
+
+如果 API Key 曾经出现在聊天、日志、终端回显或文档中，应先在 DeepSeek 控制台吊销它，再生成新的 key 配置到 GitHub Secret。
 
 ## 安全设计
 

@@ -16,7 +16,7 @@ from typing import Any
 from common import read_utf8, repo_root
 
 
-DEFAULT_OPENAI_MODEL = "gpt-5.6"
+DEFAULT_DEEPSEEK_MODEL = "deepseek-v4-pro"
 DEFAULT_MAX_PATCH_BYTES = 60_000
 DEFAULT_MAX_OUTPUT_TOKENS = 3_000
 DEFAULT_MAX_FILES = 80
@@ -358,57 +358,67 @@ def build_review_input(context: ReviewContext, policy_excerpt: str) -> str:
 """.strip()
 
 
-def openai_endpoint() -> str:
-    """Return the Responses API endpoint."""
-    base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    if base_url.endswith("/responses"):
+def deepseek_endpoint() -> str:
+    """Return the DeepSeek Chat Completions API endpoint."""
+    base_url = os.getenv("DEEPSEEK_BASE_URL", "").strip() or "https://api.deepseek.com"
+    base_url = base_url.rstrip("/")
+    if base_url.endswith("/chat/completions"):
         return base_url
-    return f"{base_url}/responses"
+    return f"{base_url}/chat/completions"
 
 
-def extract_response_text(payload: dict[str, Any]) -> str:
-    """Extract text from a Responses API payload."""
-    output_text = payload.get("output_text")
-    if isinstance(output_text, str) and output_text.strip():
-        return output_text.strip()
+def extract_chat_completion_text(payload: dict[str, Any]) -> str:
+    """Extract assistant text from a DeepSeek chat completion payload."""
+    choices = payload.get("choices")
+    if not isinstance(choices, list):
+        return ""
 
     chunks: list[str] = []
-    for item in payload.get("output", []):
-        for content in item.get("content", []):
-            if content.get("type") == "output_text" and content.get("text"):
-                chunks.append(content["text"])
+    for choice in choices:
+        message = choice.get("message") if isinstance(choice, dict) else None
+        if not isinstance(message, dict):
+            continue
+        content = message.get("content")
+        if isinstance(content, str) and content.strip():
+            chunks.append(content)
     return "\n".join(chunks).strip()
 
 
-def call_openai(instructions: str, review_input: str) -> tuple[str, str]:
-    """Call the OpenAI Responses API and return generated text plus model."""
-    api_key = os.getenv("OPENAI_API_KEY")
+def call_deepseek(instructions: str, review_input: str) -> tuple[str, str]:
+    """Call the DeepSeek Chat Completions API and return generated text plus model."""
+    api_key = os.getenv("DEEPSEEK_API_KEY")
     if not api_key:
-        raise RuntimeError("OPENAI_API_KEY is not set. Use --dry-run to validate without API access.")
+        raise RuntimeError("DEEPSEEK_API_KEY is not set. Use --dry-run to validate without API access.")
 
-    model = os.getenv("OPENAI_REVIEW_MODEL", DEFAULT_OPENAI_MODEL).strip() or DEFAULT_OPENAI_MODEL
-    max_output_tokens = int(
-        os.getenv("OPENAI_REVIEW_MAX_OUTPUT_TOKENS", str(DEFAULT_MAX_OUTPUT_TOKENS))
-    )
+    model = os.getenv("DEEPSEEK_REVIEW_MODEL", DEFAULT_DEEPSEEK_MODEL).strip()
+    model = model or DEFAULT_DEEPSEEK_MODEL
+    max_output_tokens_text = os.getenv("DEEPSEEK_REVIEW_MAX_TOKENS", "").strip()
+    max_output_tokens = int(max_output_tokens_text or str(DEFAULT_MAX_OUTPUT_TOKENS))
 
     payload: dict[str, Any] = {
         "model": model,
-        "instructions": instructions,
-        "input": review_input,
-        "max_output_tokens": max_output_tokens,
-        "store": False,
+        "messages": [
+            {"role": "system", "content": instructions},
+            {"role": "user", "content": review_input},
+        ],
+        "max_tokens": max_output_tokens,
+        "stream": False,
     }
 
-    reasoning_effort = os.getenv("OPENAI_REVIEW_REASONING_EFFORT", "").strip()
-    if reasoning_effort:
-        payload["reasoning"] = {"effort": reasoning_effort}
+    thinking = os.getenv("DEEPSEEK_REVIEW_THINKING", "").strip() or "disabled"
+    if thinking:
+        payload["thinking"] = {"type": thinking}
 
-    temperature = os.getenv("OPENAI_REVIEW_TEMPERATURE", "").strip()
+    reasoning_effort = os.getenv("DEEPSEEK_REVIEW_REASONING_EFFORT", "").strip()
+    if reasoning_effort:
+        payload["reasoning_effort"] = reasoning_effort
+
+    temperature = os.getenv("DEEPSEEK_REVIEW_TEMPERATURE", "").strip()
     if temperature:
         payload["temperature"] = float(temperature)
 
     request = urllib.request.Request(
-        openai_endpoint(),
+        deepseek_endpoint(),
         data=json.dumps(payload).encode("utf-8"),
         headers={
             "Authorization": f"Bearer {api_key}",
@@ -421,11 +431,11 @@ def call_openai(instructions: str, review_input: str) -> tuple[str, str]:
             response_payload = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
         body = error.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"OpenAI API request failed with {error.code}: {body[:1000]}") from error
+        raise RuntimeError(f"DeepSeek API request failed with {error.code}: {body[:1000]}") from error
 
-    text = extract_response_text(response_payload)
+    text = extract_chat_completion_text(response_payload)
     if not text:
-        raise RuntimeError("OpenAI API response did not include text output.")
+        raise RuntimeError("DeepSeek API response did not include text output.")
     return text, model
 
 
@@ -492,7 +502,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Build the review prompt without calling the OpenAI API.",
+        help="Build the review prompt without calling the DeepSeek API.",
     )
     parser.add_argument(
         "--max-patch-bytes",
@@ -523,7 +533,7 @@ def main() -> int:
         if args.dry_run:
             report = build_dry_run_report(context, instructions, review_input)
         else:
-            review_text, model = call_openai(instructions, review_input)
+            review_text, model = call_deepseek(instructions, review_input)
             report = build_report_header(context, "Report", model) + review_text.rstrip() + "\n"
 
         write_report(report, args.output)
