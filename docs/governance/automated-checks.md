@@ -32,8 +32,10 @@ updated_at: 2026-07-29
 - `scripts/check_markdown.py`：Markdown 结构检查。
 - `scripts/check_metadata.py`：文档 metadata 检查。
 - `scripts/check_security_content.py`：安全内容检查。
+- `scripts/ai_review.py`：手动 AI Review 报告生成脚本，不属于默认阻塞检查。
 - `scripts/common.py`：共享工具函数。
 - `.github/workflows/basic-checks.yml`：GitHub Actions 工作流。
+- `.github/workflows/ai-review.yml`：手动触发的 AI Review 工作流。
 
 ## 调用关系
 
@@ -53,6 +55,8 @@ mkdocs build --strict
 ```
 
 `check_all.py` 会按顺序调用 Markdown、metadata 和安全内容检查。任何一个脚本失败，整个检查失败。
+
+AI Review 不在 `check_all.py` 中自动运行。它需要维护者手动触发，用于生成建议报告，而不是替代基础检查或人工审核。
 
 ## Metadata 规则
 
@@ -123,4 +127,4 @@ python -m compileall scripts
 - Pull Request 标题检查。
 - 实验文档专用 metadata 检查。
 - 参考资料 URL 可访问性检查。
-- Codex AI Review 建议生成。
+- AI Review 报告结构化输出。

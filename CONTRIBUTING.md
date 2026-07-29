@@ -79,6 +79,8 @@ python -m pip install -r requirements.txt
 
 AI 可以辅助发现问题和提出建议，但不得自动批准或合并 Pull Request。
 
+维护者可以在需要时手动运行 `AI Review` GitHub Actions 工作流，输入 Pull Request 编号生成建议报告。报告只作为人工审核参考，不替代审核结论。
+
 ## 审核结论
 
 审核者应使用以下三类结论：
@@ -96,6 +98,7 @@ AI 可以辅助发现问题和提出建议，但不得自动批准或合并 Pull
 - Pull Request 模板已填写。
 - 至少一名维护者已审核。
 - `Basic Checks` 已通过。
+- 如已运行 AI Review，报告中的 `P0` 和 `P1` 问题已处理或有明确人工解释。
 - 没有未解决的阻塞评论。
 - 变更范围和 Pull Request 标题一致。
 - 不包含真实密钥或未经授权的测试目标。
