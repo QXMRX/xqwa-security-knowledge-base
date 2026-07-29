@@ -1,0 +1,7 @@
+# Default reviewer for repository-wide changes.
+* @QXMRX
+
+# Governance and automation changes should always receive maintainer attention.
+/.github/ @QXMRX
+/scripts/ @QXMRX
+/docs/governance/ @QXMRX

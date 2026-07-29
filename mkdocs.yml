@@ -17,6 +17,8 @@ nav:
   - 项目治理:
       - 目录设计: governance/repository-structure.md
       - 安全边界: governance/safety.md
+      - Pull Request 审核流程: governance/pr-review-process.md
+      - 分支保护建议: governance/branch-protection.md
       - 许可证建议: governance/license.md
 
 markdown_extensions:
