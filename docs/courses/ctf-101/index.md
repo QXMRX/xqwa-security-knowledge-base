@@ -31,8 +31,11 @@ updated_at: 2026-07-30
 
 - [课程学习指南](learning-guide.md)
 - [视觉与内容标准](art-direction.md)
+- [题目与平台规划](platform-plan.md)
 - [第 1 节：什么是 CTF](week-01/lesson-01-ctf.md)
 - [第 2 节：Linux 与终端基础](week-01/lesson-02-linux.md)
+
+全部 32 节讲义和对应 Reveal.js 课件已经按周组织，可从网站侧边栏或[课程课件目录](../../slides/ctf-101/index.html)进入。课程允许按方向跳读，但第一次参加时建议先完成第 1—4 节通用基础。
 
 ## 学习地图
 
