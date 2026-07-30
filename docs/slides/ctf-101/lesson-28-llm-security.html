@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 28 节：大语言模型应用安全｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 14</p>
+        <h1>第 28 节：大语言模型应用安全</h1>
+        <p class="lead">文本说自己是指令，不代表它获得了系统权限。</p>
+        <p class="meta">AI Security · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>识别 AI 应用边界</strong></div><div class="card"><strong>理解提示注入</strong></div><div class="card"><strong>设计工具调用控制</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>权限必须在模型外实施</h2>
+        <div class="panel">身份、授权、参数验证和高风险确认由确定性应用代码执行。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Prompt Injection</strong>不可信文本改变目标</div><div class="card"><strong>泄露</strong>上下文或输出暴露数据</div><div class="card"><strong>输出处理</strong>下游误信模型文本</div><div class="card"><strong>工具越权</strong>动作超过用户权限</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>阅读模拟应用数据流</li><li>标出不同来源文本</li><li>观察不可信文档影响</li><li>加入权限和确认控制</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>更强提示词能完整修复吗？</h2>
+        <p class="lead">不能。安全动作需要确定性边界和权限校验。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>为工具动作设计不同确认等级。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>AI 幻觉需要独立验证</h2>
+        <p class="lead">安全结论要回到代码、官方文档和可复现实验。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：画信任边界图</h2>
+        <p>标出一个必须由代码执行的检查。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>模型生成建议，应用执行权限</h2>
+        <p class="lead">下一节让 AI 成为可验证的分析助手。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

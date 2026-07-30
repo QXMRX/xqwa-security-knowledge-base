@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 17 节：GDB 动态调试｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 09</p>
+        <h1>第 17 节：GDB 动态调试</h1>
+        <p class="lead">断点不是暂停按钮，而是验证猜想的观察点。</p>
+        <p class="meta">Reverse · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>设置断点</strong></div><div class="card"><strong>查看运行时状态</strong></div><div class="card"><strong>验证静态分析猜想</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>停在哪里取决于想区分什么</h2>
+        <div class="panel">先写预期，再观察寄存器、内存和分支是否符合。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>断点</strong>选择观察事件</div><div class="card"><strong>单步</strong>查看下一步变化</div><div class="card"><strong>内存/寄存器</strong>确认数据状态</div><div class="card"><strong>调用栈</strong>理解调用关系</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>在关键函数设置断点</li><li>记录参数和返回位置</li><li>跨过比较观察分支</li><li>用两组输入重复验证</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>停下之前写了预期吗？</h2>
+        <p class="lead">没有预期的单步很容易变成无目标漫游。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>用观察点跟踪变量修改。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>调试器属于整个软件工程</h2>
+        <p class="lead">开发、测试、性能和响应工作都依赖运行时证据。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：提交断点记录</h2>
+        <p>位置、预期、实际和结论四项。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>让运行状态回答问题</h2>
+        <p class="lead">下一节用 Ghidra 建立更完整的静态模型。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

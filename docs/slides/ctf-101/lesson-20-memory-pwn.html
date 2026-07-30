@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 20 节：C 内存模型与 Pwn 基础｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 10</p>
+        <h1>第 20 节：C 内存模型与 Pwn 基础</h1>
+        <p class="lead">C 的控制力，也意味着边界责任交给开发者。</p>
+        <p class="meta">Pwn · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>区分常见内存区域</strong></div><div class="card"><strong>理解越界影响</strong></div><div class="card"><strong>调试观察对象布局</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>示意模型服务理解，不是固定地址表</h2>
+        <div class="panel">对象位置与生命周期帮助我们分析错误，但布局受系统和构建影响。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>代码区</strong>指令和只读常量</div><div class="card"><strong>全局数据</strong>长生命周期对象</div><div class="card"><strong>堆</strong>动态申请和释放</div><div class="card"><strong>栈</strong>调用相关临时状态</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>阅读数组与指针程序</li><li>预测对象位置和生命周期</li><li>调试查看地址</li><li>加入边界检查后比较</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>越界一定只会崩溃吗？</h2>
+        <p class="lead">它造成未定义行为，实际影响依赖布局、输入和防护。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>使用地址检测工具观察诊断。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>内存安全语言消除一大类错误</h2>
+        <p class="lead">但业务逻辑、权限和密码学仍需要单独设计。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：画生命周期或安全改写</h2>
+        <p>任选其一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>先理解内存，再谈控制</h2>
+        <p class="lead">下一节聚焦栈边界和可验证的溢出现象。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

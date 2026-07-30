@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 15 节：程序、编译与二进制｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 08</p>
+        <h1>第 15 节：程序、编译与二进制</h1>
+        <p class="lead">可执行文件不是随机字节，而是一份能被逐层观察的程序地图。</p>
+        <p class="meta">Reverse · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解编译产物</strong></div><div class="card"><strong>查看 ELF 基本信息</strong></div><div class="card"><strong>定位输入输出线索</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>先做低成本观察</h2>
+        <div class="panel">格式、架构、字符串和符号常常已经能回答第一轮问题。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>编译</strong>源码到机器形式</div><div class="card"><strong>ELF</strong>Linux 可执行文件格式</div><div class="card"><strong>节与段</strong>文件与装载视角</div><div class="card"><strong>符号/字符串</strong>函数和常量线索</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>编译并运行短 C 程序</li><li>使用基础工具观察</li><li>对应字符串与源码</li><li>比较去除符号后的版本</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>你能先写出程序画像吗？</h2>
+        <p class="lead">在读汇编前，说明格式、架构、输入和关键字符串。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较调试构建与发布构建。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>可执行依赖共同约定</h2>
+        <p class="lead">格式、架构和系统接口共同决定文件如何被装载。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：写五行程序画像</h2>
+        <p>只分析课程提供的本地文件。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>先建立地图，再深入细节</h2>
+        <p class="lead">下一节学习够用的汇编阅读方法。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

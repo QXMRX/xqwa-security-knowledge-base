@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 5 节：HTTP、Cookie 与 Session｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 03</p>
+        <h1>第 5 节：HTTP、Cookie 与 Session</h1>
+        <p class="lead">浏览器携带状态，服务端决定权限。</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>阅读请求结构</strong></div><div class="card"><strong>区分 Cookie 与 Session</strong></div><div class="card"><strong>在本地重放请求</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>HTTP 默认不记得你</h2>
+        <div class="panel">应用通过客户端凭据关联服务端状态，但权限判断必须留在服务端。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Header</strong>描述请求上下文</div><div class="card"><strong>Cookie</strong>浏览器携带的数据</div><div class="card"><strong>Session</strong>服务端会话状态</div><div class="card"><strong>Token</strong>需验证的身份或授权信息</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>观察本地登录请求</li><li>比较登录前后状态字段</li><li>退出登录后重放旧请求</li><li>解释服务端响应</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>保存状态和检查权限是一回事吗？</h2>
+        <p class="lead">不是。客户端保存什么，不决定服务端必须授权什么。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>观察 HttpOnly、Secure 与 SameSite。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>隐身模式不是匿名模式</h2>
+        <p class="lead">它主要减少本机留下的历史和站点数据，不会让网络访问凭空消失。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：标注一份请求</h2>
+        <p>只使用本地请求，移除所有真实凭据。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>状态是线索，授权是决定</h2>
+        <p class="lead">下一节从源码和错误信息建立 Web 应用地图。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

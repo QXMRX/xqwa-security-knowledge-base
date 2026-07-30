@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 19 节：混淆、校验与 Reverse 综合｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 10</p>
+        <h1>第 19 节：混淆、校验与 Reverse 综合</h1>
+        <p class="lead">混淆增加阅读成本，却无法取消程序必须产生行为的事实。</p>
+        <p class="meta">Reverse · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>识别简单混淆</strong></div><div class="card"><strong>组合三类工具</strong></div><div class="card"><strong>完成证据链 Writeup</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>不必理解所有代码</h2>
+        <div class="panel">优先找到输入、关键变换、比较与成功路径。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>混淆</strong>提高理解成本</div><div class="card"><strong>静态</strong>建立程序地图</div><div class="card"><strong>动态</strong>观察实际路径</div><div class="card"><strong>脚本</strong>复现局部算法</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>选择本地或授权入门题</li><li>建立输入到输出流程</li><li>脚本复现局部变换</li><li>运行验证并整理记录</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>为什么在这一步使用这个工具？</h2>
+        <p class="lead">Writeup 要解释选择依据，而不是只罗列截图。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>在本地练习中修改一个条件分支观察行为。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>保护也有维护成本</h2>
+        <p class="lead">混淆需要在威胁模型、性能和维护性之间权衡。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—40 分钟：补流程或注释</h2>
+        <p>二选一，不要求额外完成新题。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>围绕成功路径压缩复杂度</h2>
+        <p class="lead">下一节从 C 指针进入 Pwn 的内存世界。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

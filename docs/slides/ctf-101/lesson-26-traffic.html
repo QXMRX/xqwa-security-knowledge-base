@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 26 节：网络流量与日志分析｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 13</p>
+        <h1>第 26 节：网络流量与日志分析</h1>
+        <p class="lead">抓包像监控录像，先筛选，再跟踪一条完整交互。</p>
+        <p class="meta">Misc / Forensics · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>缩小 PCAP 范围</strong></div><div class="card"><strong>重组一条会话</strong></div><div class="card"><strong>交叉验证日志</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>单个包很少是完整故事</h2>
+        <div class="panel">使用时间、端点、协议和会话逐步减少噪声。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>过滤</strong>控制显示范围</div><div class="card"><strong>五元组</strong>标识通信关系</div><div class="card"><strong>TCP Stream</strong>恢复会话视图</div><div class="card"><strong>时间线</strong>对齐流量与日志</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>查看协议和端点概览</li><li>按时间与协议筛选</li><li>跟踪一条会话</li><li>与应用日志对照</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>过滤为空说明什么？</h2>
+        <p class="lead">先检查字段、解析和时间范围，不必立刻放弃筛选。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>使用 tshark 导出同一结果。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>公共 Wi-Fi 风险不只在明文</h2>
+        <p class="lead">假热点、钓鱼页和证书警告仍需关注。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：整理流量时间线</h2>
+        <p>三到五步，附上数据来源。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>从噪声中恢复事件顺序</h2>
+        <p class="lead">下一节将文件、搜索和来源评估组合起来。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

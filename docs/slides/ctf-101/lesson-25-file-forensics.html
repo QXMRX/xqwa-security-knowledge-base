@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 25 节：文件格式与隐藏信息｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 13</p>
+        <h1>第 25 节：文件格式与隐藏信息</h1>
+        <p class="lead">文件名是标签，文件结构才是证据。</p>
+        <p class="meta">Misc / Forensics · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>判断真实格式</strong></div><div class="card"><strong>识别隐藏线索</strong></div><div class="card"><strong>保留无损证据链</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>先观察，后提取</h2>
+        <div class="panel">保留原文件和摘要，在副本上操作；根据结构选择工具。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Magic bytes</strong>格式开头标识</div><div class="card"><strong>元数据</strong>设备、时间和工具上下文</div><div class="card"><strong>容器</strong>一个文件组织多种数据</div><div class="card"><strong>隐写</strong>隐藏可见性，不等于加密</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>记录大小和摘要</li><li>查看类型与元数据</li><li>观察文件尾和嵌入线索</li><li>提取后再次识别</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>为什么决定继续提取？</h2>
+        <p class="lead">指出结构、偏移或元数据证据。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>用虚构图片比较清理元数据前后。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>照片可能留下设备和位置</h2>
+        <p class="lead">上传前按场景检查元数据，不假设平台一定自动清理。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：文件分析时间线</h2>
+        <p>最多六步，每步包含观察和理由。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>每次操作都保留依据</h2>
+        <p class="lead">下一节从离线文件进入网络流量时间线。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

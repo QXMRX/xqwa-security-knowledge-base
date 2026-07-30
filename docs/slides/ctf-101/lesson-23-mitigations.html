@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 23 节：二进制保护机制｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 12</p>
+        <h1>第 23 节：二进制保护机制</h1>
+        <p class="lead">防护不是绝对开关，而是多层提高攻击成本。</p>
+        <p class="meta">Pwn · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解五种防护</strong></div><div class="card"><strong>读取保护状态</strong></div><div class="card"><strong>对应受阻步骤</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>纵深防御</h2>
+        <div class="panel">限制执行、检测破坏、随机化位置和保护链接数据相互配合。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>NX</strong>限制数据页执行</div><div class="card"><strong>Canary</strong>检测栈破坏</div><div class="card"><strong>PIE/ASLR</strong>随机化位置</div><div class="card"><strong>RELRO</strong>保护链接数据</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>检查多组本地程序</li><li>比较同一漏洞表现</li><li>列出 ret2win 前提</li><li>讨论源代码修复</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>开启防护等于没有漏洞吗？</h2>
+        <p class="lead">不等于。它降低转化风险，但源代码错误仍应修复。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>查阅一个编译保护选项。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>安全需要多层共同负责</h2>
+        <p class="lead">代码、构建、系统隔离、监控和更新分别降低不同风险。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：做保护对照表</h2>
+        <p>写清阻碍步骤与不能解决的问题。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>防护改变条件，不替代修复</h2>
+        <p class="lead">最后用最小 ROP 链理解代码复用。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

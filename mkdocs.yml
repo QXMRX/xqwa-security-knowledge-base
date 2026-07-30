@@ -14,6 +14,60 @@ theme:
 nav:
   - 首页: index.md
   - 新成员入门: getting-started.md
+  - CTF 网络安全实战基础:
+      - 学期课程大纲: ctf-course-outline.md
+      - 课程首页: courses/ctf-101/index.md
+      - 学习指南: courses/ctf-101/learning-guide.md
+      - 视觉与内容标准: courses/ctf-101/art-direction.md
+      - 题目与平台规划: courses/ctf-101/platform-plan.md
+      - 第 1 周:
+          - 什么是 CTF: courses/ctf-101/week-01/lesson-01-ctf.md
+          - Linux 与终端基础: courses/ctf-101/week-01/lesson-02-linux.md
+      - 第 2 周:
+          - Python 基础: courses/ctf-101/week-02/lesson-03-python.md
+          - 网络与信息检索: courses/ctf-101/week-02/lesson-04-network.md
+      - 第 3 周:
+          - HTTP 与会话: courses/ctf-101/week-03/lesson-05-http-session.md
+          - Web 信息收集: courses/ctf-101/week-03/lesson-06-web-recon.md
+      - 第 4 周:
+          - 身份认证与授权: courses/ctf-101/week-04/lesson-07-authz.md
+          - SQL 注入与修复: courses/ctf-101/week-04/lesson-08-sqli.md
+      - 第 5 周:
+          - 服务端输入边界: courses/ctf-101/week-05/lesson-09-server-inputs.md
+          - Web 综合练习: courses/ctf-101/week-05/lesson-10-web-mini-ctf.md
+      - 第 6 周:
+          - 编码、加密与哈希: courses/ctf-101/week-06/lesson-11-crypto-basics.md
+          - 古典密码与 XOR: courses/ctf-101/week-06/lesson-12-classical-xor.md
+      - 第 7 周:
+          - RSA 基础: courses/ctf-101/week-07/lesson-13-rsa.md
+          - 哈希与随机数: courses/ctf-101/week-07/lesson-14-hash-random.md
+      - 第 8 周:
+          - 程序与二进制: courses/ctf-101/week-08/lesson-15-binary-basics.md
+          - 汇编与函数调用: courses/ctf-101/week-08/lesson-16-assembly.md
+      - 第 9 周:
+          - GDB 动态调试: courses/ctf-101/week-09/lesson-17-gdb.md
+          - Ghidra 静态分析: courses/ctf-101/week-09/lesson-18-ghidra.md
+      - 第 10 周:
+          - Reverse 综合: courses/ctf-101/week-10/lesson-19-reverse-mini-ctf.md
+          - 内存与 Pwn 基础: courses/ctf-101/week-10/lesson-20-memory-pwn.md
+      - 第 11 周:
+          - 栈溢出与修复: courses/ctf-101/week-11/lesson-21-stack-overflow.md
+          - ret2win: courses/ctf-101/week-11/lesson-22-ret2win.md
+      - 第 12 周:
+          - 二进制保护: courses/ctf-101/week-12/lesson-23-mitigations.md
+          - ROP 基础: courses/ctf-101/week-12/lesson-24-rop.md
+      - 第 13 周:
+          - 文件与隐藏信息: courses/ctf-101/week-13/lesson-25-file-forensics.md
+          - 流量与日志: courses/ctf-101/week-13/lesson-26-traffic.md
+      - 第 14 周:
+          - OSINT 与 Misc: courses/ctf-101/week-14/lesson-27-osint-misc.md
+          - LLM 应用安全: courses/ctf-101/week-14/lesson-28-llm-security.md
+      - 第 15 周:
+          - AI 安全工具与攻击面: courses/ctf-101/week-15/lesson-29-ai-ctf.md
+          - 比赛方法与模拟赛: courses/ctf-101/week-15/lesson-30-ctf-method.md
+      - 第 16 周:
+          - 学期综合 CTF: courses/ctf-101/week-16/lesson-31-final-ctf.md
+          - 复盘与发展规划: courses/ctf-101/week-16/lesson-32-retro.md
   - 项目治理:
       - 目录设计: governance/repository-structure.md
       - 安全边界: governance/safety.md

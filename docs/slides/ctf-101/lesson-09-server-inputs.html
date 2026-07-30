@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 9 节：文件、模板与服务端请求｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 05</p>
+        <h1>第 9 节：文件、模板与服务端请求</h1>
+        <p class="lead">不可信输入最终被哪个高能力组件解释了？</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>识别三类输入边界</strong></div><div class="card"><strong>绘制数据流</strong></div><div class="card"><strong>提出设计层防护</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>从漏洞名回到数据流</h2>
+        <div class="panel">路径、模板和网络地址都是解释器输入；追踪输入如何到达敏感操作。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>上传</strong>类型、内容、存储与权限</div><div class="card"><strong>路径</strong>输入不能任意决定位置</div><div class="card"><strong>模板</strong>数据不应变成表达式</div><div class="card"><strong>服务端请求</strong>限制目标、协议与响应</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>阅读三个本地片段</li><li>标出输入源和敏感操作</li><li>提出可验证风险假设</li><li>添加隔离或白名单防护</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>输入在哪里变得危险？</h2>
+        <p class="lead">用数据流回答，而不是只写一个漏洞名称。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>整理输入—解释器—影响—防护表。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>扩展名不是文件身份证</h2>
+        <p class="lead">安全处理还需要内容检测、隔离存储与最小权限。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：画一条数据流</h2>
+        <p>三种场景任选其一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>跟着数据走，就能找到边界</h2>
+        <p class="lead">下一节用小型 CTF 把 Web 方法串起来。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

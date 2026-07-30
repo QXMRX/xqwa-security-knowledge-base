@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 21 节：栈溢出原理与安全修复｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 11</p>
+        <h1>第 21 节：栈溢出原理与安全修复</h1>
+        <p class="lead">长输入不是结论，越界影响了什么才是证据。</p>
+        <p class="meta">Pwn · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解栈帧与缓冲区</strong></div><div class="card"><strong>确认越界影响范围</strong></div><div class="card"><strong>完成安全修复</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>区分三个证据层次</h2>
+        <div class="panel">观察到覆盖、观察到崩溃、证明控制流可控，不是同一结论。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>栈帧</strong>调用临时状态</div><div class="card"><strong>缓冲区</strong>有容量的连续存储</div><div class="card"><strong>边界检查</strong>写入前验证空间</div><div class="card"><strong>未定义行为</strong>语言不保证结果</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>比较安全与漏洞版本</li><li>逐步观察边界现象</li><li>确认相邻状态变化</li><li>修复并回归正常功能</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>你的结论超过证据了吗？</h2>
+        <p class="lead">只报告已经在本地环境中验证的影响。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较编译器警告和运行时检测。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>崩溃是调查起点</h2>
+        <p class="lead">保留最小复现、评估影响并修复，不在生产环境继续试探。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：提交四段记录</h2>
+        <p>成因、证据、修复、回归。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>先证明内存影响，再讨论利用</h2>
+        <p class="lead">下一节用 ret2win 观察最小控制流变化。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

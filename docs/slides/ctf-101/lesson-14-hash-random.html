@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 14 节：哈希、随机数与脚本化分析｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 07</p>
+        <h1>第 14 节：哈希、随机数与脚本化分析</h1>
+        <p class="lead">不可读不等于安全，看似随机也不等于不可预测。</p>
+        <p class="meta">Crypto · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解哈希安全性质</strong></div><div class="card"><strong>区分普通与安全随机</strong></div><div class="card"><strong>分析弱随机教学题</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>问清楚具体安全性质</h2>
+        <div class="panel">能否预测、能否枚举、是否加盐，比“看起来随机”更有意义。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>原像</strong>从摘要寻找输入</div><div class="card"><strong>碰撞</strong>不同输入得到相同摘要</div><div class="card"><strong>盐</strong>打破相同密码的相同结果</div><div class="card"><strong>CSPRNG</strong>面向安全用途的随机源</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>比较微小输入变化</li><li>观察无盐弱口令匹配</li><li>分析可预测种子</li><li>验证预测并提出修复</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>种子未知就安全吗？</h2>
+        <p class="lead">还需检查种子空间、可观察输出和生成器用途。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>演示文件校验及其信任边界。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>摘要检测变化，不自动证明来源</h2>
+        <p class="lead">可信发布还需要可信渠道或数字签名。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：写用途边界</h2>
+        <p>补全哈希说明或随机实验记录。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>从性质出发，而不是从名称出发</h2>
+        <p class="lead">下一模块进入二进制，先看程序如何从源码变成文件。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

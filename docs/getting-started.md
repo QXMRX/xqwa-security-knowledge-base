@@ -4,7 +4,7 @@ audience: 新成员
 status: stable
 owner: QXMRX
 review_cycle: quarterly
-updated_at: 2026-07-29
+updated_at: 2026-07-30
 ---
 
 # 新成员入门
@@ -13,12 +13,13 @@ updated_at: 2026-07-29
 
 ## 学习路径
 
-当前尚未建立完整课程体系。建议先熟悉以下内容：
+建议先熟悉以下内容：
 
 1. 阅读项目首页，理解资料库目标。
 2. 阅读安全边界，明确哪些实验场景被允许。
 3. 阅读贡献规范，了解如何通过 Pull Request 提交内容。
-4. 本地运行基础检查，确认环境可以工作。
+4. 阅读 [CTF 网络安全实战基础](courses/ctf-101/index.md)，从第 1 周资料开始。
+5. 本地运行基础检查，确认环境可以工作。
 
 ## 本地预览
 
@@ -53,10 +54,4 @@ python3 -m http.server 3000 --directory /tmp/xqwa-pages-preview
 
 ## 下一步学习内容
 
-后续阶段会逐步补充：
-
-- Web 安全基础。
-- Linux 与网络基础。
-- Docker 实验环境。
-- CTF 题目复盘。
-- 安全工具合法使用规范。
+目前已提供完整 16 周课程讲义、Reveal.js 课件和平台规划。后续将逐步补充 Docker 实验环境、离线题目附件和社团服务器运行配置。

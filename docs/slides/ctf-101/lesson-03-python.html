@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 3 节：Python CTF 编程基础｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 02</p>
+        <h1>第 3 节：Python CTF 编程基础</h1>
+        <p class="lead">把重复劳动交给脚本，把判断过程留给自己。</p>
+        <p class="meta">通用基础 · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>区分文本与字节</strong></div><div class="card"><strong>用函数组织转换步骤</strong></div><div class="card"><strong>完成编码转换工具</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>先跑通一次，再考虑自动化</h2>
+        <div class="panel">脚本的价值不是行数少，而是输入、转换和输出都能被检查。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>str</strong>人阅读的 Unicode 文本</div><div class="card"><strong>bytes</strong>文件和网络中的字节</div><div class="card"><strong>函数</strong>封装一件可验证的小事</div><div class="card"><strong>异常</strong>让失败也能被理解</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>读取教师提供的样本</li><li>判断编码并显示中间结果</li><li>抽取重复逻辑为函数</li><li>为异常输入补充提示</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>你知道数据现在是什么类型吗？</h2>
+        <p class="lead">遇到类型错误时，先观察 str 与 bytes 的边界。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>加入文件批量读取或 Flag 格式检测。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>自动化会放大结果，也会放大错误</h2>
+        <p class="lead">先在一条样本上验证，再批量处理；不要把课堂脚本指向未授权服务。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：完善一个入口</h2>
+        <p>补帮助信息，或提交输入—转换—输出记录，二选一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>可观察，才可调试</h2>
+        <p class="lead">下一节把脚本放进网络与 HTTP 的上下文。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>
