@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 2 节：Linux 与终端基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section><p class="eyebrow">CTF 网络安全实战基础 · Week 01</p><h1>Linux 与<span class="accent">终端</span>基础</h1><p class="lead">终端不是更难用的文件管理器；它是一种可以观察、组合和复现操作的工作方式。</p></section>
+      <section><p class="eyebrow">今天能带走什么</p><h2>三个目标</h2><div class="grid-three"><div class="card"><strong>定位</strong>知道自己在哪个目录</div><div class="card"><strong>观察</strong>查看文件并缩小搜索范围</div><div class="card"><strong>组合</strong>用管道连接小工具</div></div></section>
+      <section><p class="eyebrow">一个准确的直觉</p><h2>当前目录像你的实验台</h2><p class="lead">相对路径描述“从实验台走到哪里”；绝对路径从系统根目录开始描述完整位置。它们都是路径，只是参照点不同。</p></section>
+      <section><p class="eyebrow">四个基础命令</p><h2>先让每一步都有输出</h2><div class="grid"><div class="card"><strong><code>pwd</code></strong>我现在在哪？</div><div class="card"><strong><code>ls</code></strong>这里有什么？</div><div class="card"><strong><code>cat</code></strong>短文本写了什么？</div><div class="card"><strong><code>grep</code></strong>哪里出现了关键词？</div></div></section>
+      <section><p class="eyebrow">工具组合</p><h2>管道不是魔法</h2><p class="lead">每个命令只做一件小事。管道 <code>|</code> 把前一个命令的输出交给下一个命令处理，让你逐步缩小问题。</p><div class="flow"><span>列出内容</span><b>→</b><span>筛选关键词</span><b>→</b><span>检查线索</span></div></section>
+      <section><p class="eyebrow">课堂主线</p><h2>从练习目录中找线索</h2><pre><code class="language-bash">pwd
+ls -la
+grep -R "flag" .</code></pre><p class="lead">这些命令仅针对课程提供的练习目录。每执行一步，都先看输出，再决定下一步。</p></section>
+      <section><p class="eyebrow">检查点</p><h2>你能解释这条路径吗？</h2><div class="panel">“我先确认位置，再列出文件，最后缩小搜索范围。”<br /><span class="warm">这就是终端最重要的思维方式。</span></div></section>
+      <section><p class="eyebrow">可选探索</p><h2>让陌生文件先开口</h2><p>试试 <code>file</code>、<code>head</code> 或 <code>tail</code>。不用背参数，只要记录：这个工具回答了我什么问题？</p></section>
+      <section><p class="eyebrow">安全加餐</p><h2>GitHub 是作品集，不是网盘</h2><ul><li>可以保存学习笔记和无敏感内容的脚本。</li><li>提交前确认没有 Token、Cookie、密码或真实配置。</li><li>公开历史可能长期可见，删除文件不等于抹去记录。</li></ul></section>
+      <section><p class="eyebrow">课后轻任务 · 20—30 分钟</p><h2>写一张自己的命令速记卡</h2><p>记录 <code>pwd</code>、<code>ls</code>、<code>cat</code>、<code>grep</code> 各自解决什么问题。时间不够时，先完成课堂记录。</p></section>
+      <section><p class="eyebrow">下一节预告</p><h2>Python：让重复劳动交给脚本</h2><p class="lead">下一次，我们会把字符串、文件和编码处理串起来，做出第一个 CTF 辅助工具。</p></section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>
