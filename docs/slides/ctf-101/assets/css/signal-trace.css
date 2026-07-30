@@ -10,10 +10,10 @@
   --r-selection-background-color: #48c6ef;
 }
 
-.reveal { background: radial-gradient(circle at 10% 10%, #14233c 0, #0b1020 42%, #080c17 100%); }
+.reveal { background: radial-gradient(circle at 10% 10%, #14233c 0, #0b1020 42%, #080c17 100%); color: var(--r-main-color); font-family: var(--r-main-font); font-size: var(--r-main-font-size); }
 .reveal .slides { text-align: left; }
-.reveal h1, .reveal h2, .reveal h3 { letter-spacing: -0.03em; text-transform: none; }
-.reveal h1 { font-size: 2.35em; }
+.reveal h1, .reveal h2, .reveal h3 { color: var(--r-heading-color); font-family: var(--r-heading-font); font-weight: var(--r-heading-font-weight); letter-spacing: -0.03em; text-transform: none; }
+.reveal h1 { font-size: 1.95em; line-height: 1.12; }
 .reveal h2 { font-size: 1.5em; }
 .reveal p, .reveal li { line-height: 1.5; }
 .reveal ul { margin-left: 0.9em; }
@@ -35,4 +35,10 @@
 .reveal .flow b { color: #f4b942; }
 .reveal .footer { bottom: 18px; color: #aab7cf; font-size: 0.36em; left: 30px; position: fixed; }
 .reveal .progress { color: #48c6ef; height: 4px; }
+.reveal .meta { color: #aab7cf; font-size: 0.55em; margin-top: 1.5em; }
+.reveal .step-list { counter-reset: step; list-style: none; margin-left: 0; }
+.reveal .step-list li { counter-increment: step; margin: 0.42em 0; padding-left: 2.2em; position: relative; }
+.reveal .step-list li::before { border: 1px solid #48c6ef; border-radius: 50%; color: #48c6ef; content: counter(step); font-size: 0.65em; height: 1.55em; left: 0; line-height: 1.55em; position: absolute; text-align: center; top: 0.18em; width: 1.55em; }
+.reveal table { font-size: 0.66em; }
+.reveal table th { color: #48c6ef; }
 @media (max-width: 800px) { .reveal .grid, .reveal .grid-three { grid-template-columns: 1fr; } }
