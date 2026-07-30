@@ -54,4 +54,4 @@ python3 -m http.server 3000 --directory /tmp/xqwa-pages-preview
 
 ## 下一步学习内容
 
-目前已提供课程首页、学习指南和第 1 周教学资料。后续将逐步补充 Web、Crypto、Reverse、Pwn、Misc、AI Security、Docker 实验环境、CTF 题目复盘和安全工具合法使用规范。
+目前已提供完整 16 周课程讲义、Reveal.js 课件和平台规划。后续将逐步补充 Docker 实验环境、离线题目附件和社团服务器运行配置。
