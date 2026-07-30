@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 1 节：什么是 CTF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 01</p>
+        <h1>什么是 <span class="accent">CTF</span></h1>
+        <p class="lead">先学会看见线索、提出猜想、验证结果。Flag 只是这条路径上的一个检查点。</p>
+      </section>
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>看懂</strong>CTF、Flag 与常见赛制</div><div class="card"><strong>分辨</strong>六个方向各在研究什么</div><div class="card"><strong>完成</strong>第一道编码小题的分析记录</div></div>
+      </section>
+      <section>
+        <p class="eyebrow">从一个问题开始</p>
+        <h2>CTF 不是“去攻击别人”</h2>
+        <p class="lead">它是一组经过设计、明确授权、可以复现的安全谜题。你要做的是从代码、文件、协议或数据里找到证据，并说明推理过程。</p>
+        <div class="panel"><span class="warm">关键词：</span>授权、证据、复现、复盘。</div>
+      </section>
+      <section>
+        <p class="eyebrow">基本单位</p>
+        <h2>Flag 是什么？</h2>
+        <div class="panel"><code>flag{example}</code><p>它是题目完成凭证，不是现实系统的密码、Token 或敏感数据。</p></div>
+      </section>
+      <section>
+        <p class="eyebrow">比赛形式</p>
+        <h2>先从 Jeopardy 开始</h2>
+        <div class="grid"><div class="card"><strong>Jeopardy</strong>独立题目，按类别和分值完成。适合训练、入门和复盘。</div><div class="card"><strong>Attack-Defense</strong>维护自己的服务，同时处理攻防。适合后续战队进阶。</div></div>
+      </section>
+      <section>
+        <p class="eyebrow">方向地图</p>
+        <h2>六种题，不是六堵墙</h2>
+        <div class="grid-three"><div class="card"><strong>Web</strong>请求、登录、服务端逻辑</div><div class="card"><strong>Crypto</strong>编码、加密、数学规律</div><div class="card"><strong>Reverse</strong>程序、汇编、校验逻辑</div><div class="card"><strong>Pwn</strong>内存、控制流、防护机制</div><div class="card"><strong>Misc</strong>文件、流量、脚本、线索</div><div class="card"><strong>AI Security</strong>提示词、数据边界、工具调用</div></div>
+      </section>
+      <section>
+        <p class="eyebrow">通用方法</p>
+        <h2>每次解题都走这条路</h2>
+        <div class="flow"><span>观察线索</span><b>→</b><span>提出猜想</span><b>→</b><span>收集证据</span><b>→</b><span>验证结果</span><b>→</b><span>记录复盘</span></div>
+      </section>
+      <section>
+        <p class="eyebrow">动手检查点</p>
+        <h2>一段文本为什么像 Base64？</h2>
+        <ul><li>观察字符集合是否有限。</li><li>确认是否有结尾填充符。</li><li>解码后检查输出能否解释题目。</li></ul>
+        <p class="lead">重要的不是“猜中”，而是能写下你为什么先验证它。</p>
+      </section>
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>白帽子不是电影角色</h2>
+        <p class="lead">理解漏洞的目的，是帮助修复系统。没有明确授权的目标，不是课堂靶场。</p>
+        <p class="danger">课程实验只在本地、社团靶场或明确授权的 CTF 平台中进行。</p>
+      </section>
+      <section>
+        <p class="eyebrow">课后轻任务 · 20 分钟</p>
+        <h2>完成一次编码与解码</h2>
+        <p>写下 3—5 句话：编码和加密有什么不同？如果卡住，记录你已经观察到的内容即可。</p>
+      </section>
+      <section>
+        <p class="eyebrow">下一节</p>
+        <h2>让终端成为你的实验台</h2>
+        <p class="lead">我们从文件、路径和搜索开始，学会把“我觉得这里有东西”变成可重复的查找过程。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>
