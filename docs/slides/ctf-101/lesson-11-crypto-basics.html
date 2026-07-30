@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 11 节：编码、加密与哈希｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 06</p>
+        <h1>第 11 节：编码、加密与哈希</h1>
+        <p class="lead">看起来都像乱码，解决的问题却完全不同。</p>
+        <p class="meta">Crypto · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>区分三类机制</strong></div><div class="card"><strong>根据特征选择验证</strong></div><div class="card"><strong>完成本地表示转换</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>目的比外观重要</h2>
+        <div class="panel">编码服务表示，加密服务保密，哈希服务摘要与验证。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>编码</strong>可逆表示，不提供保密</div><div class="card"><strong>加密</strong>密钥控制下可逆</div><div class="card"><strong>哈希</strong>固定长度摘要</div><div class="card"><strong>上下文</strong>决定合理的第一步</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>观察四组数据</li><li>根据字符集提出猜想</li><li>用本地工具验证</li><li>记录被排除的错误猜想</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>Base64 能保护秘密吗？</h2>
+        <p class="lead">不能。任何知道编码方式的人都能还原。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>为转换脚本加入三种数据视图。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>密码管理器帮助避免复用</h2>
+        <p class="lead">它不是万能防护，但能让不同站点拥有独立随机密码。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20 分钟：制作机制对照卡</h2>
+        <p>分别写出能解决和不能解决的问题。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>先判断机制，再选择工具</h2>
+        <p class="lead">下一节利用模式和约束分析古典密码与 XOR。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

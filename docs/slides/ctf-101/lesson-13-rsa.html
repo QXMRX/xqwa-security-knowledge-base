@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 13 节：RSA 基础与错误配置｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 07</p>
+        <h1>第 13 节：RSA 基础与错误配置</h1>
+        <p class="lead">CTF 往往不是破解 RSA，而是找到被破坏的安全前提。</p>
+        <p class="meta">Crypto · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解公私钥关系</strong></div><div class="card"><strong>读懂常见参数</strong></div><div class="card"><strong>分析弱参数教学题</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>公式之外，还有参数条件</h2>
+        <div class="panel">正确参数下的问题足够困难；入门题会故意让素数、复用或明文范围出问题。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>p、q</strong>构造模数的素数</div><div class="card"><strong>n</strong>公共模数</div><div class="card"><strong>e、d</strong>公钥与私钥指数</div><div class="card"><strong>m、c</strong>明文与密文整数</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>用小整数理解模运算</li><li>完成字节与整数往返</li><li>定位教学题弱点</li><li>脚本恢复并校验</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>你知道每个变量从哪来吗？</h2>
+        <p class="lead">不必手算大整数，但需要理解脚本中的数据来源。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>解释破解算法与利用错误配置的区别。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>HTTPS 不只做加密</h2>
+        <p class="lead">它还涉及身份验证和完整性，但不保证网站业务逻辑安全。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：注释并校验脚本</h2>
+        <p>数学推导为可选项。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>安全来自机制和条件同时成立</h2>
+        <p class="lead">下一节检查哈希性质与随机数可预测性。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

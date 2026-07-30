@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 12 节：古典密码与 XOR｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 06</p>
+        <h1>第 12 节：古典密码与 XOR</h1>
+        <p class="lead">模式、周期和已知格式，会把大空间压缩成小问题。</p>
+        <p class="meta">Crypto · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>识别常见模式</strong></div><div class="card"><strong>利用约束缩小空间</strong></div><div class="card"><strong>编写候选分析脚本</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>不是猜，是利用约束</h2>
+        <div class="panel">自然语言分布、Flag 格式和密钥复用都会留下可验证线索。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Caesar</strong>整体平移</div><div class="card"><strong>Vigenère</strong>多组平移按周期重复</div><div class="card"><strong>XOR</strong>相同位两次异或恢复</div><div class="card"><strong>已知明文</strong>帮助恢复局部密钥流</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>手工完成短平移</li><li>脚本枚举有限候选</li><li>观察 XOR 周期</li><li>说明候选筛选依据</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>输出很多候选等于解完了吗？</h2>
+        <p class="lead">还需要用题目约束解释为什么选择其中一个。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>按可打印字符比例排序。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>机制公开，密钥保密</h2>
+        <p class="lead">现代密码学依靠公开检验的算法与秘密密钥，而不是隐藏算法。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：提交一份候选记录</h2>
+        <p>Caesar 或 XOR 二选一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>约束让搜索变得可解释</h2>
+        <p class="lead">下一节用同样思路理解 RSA 的安全前提。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

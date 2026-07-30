@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 24 节：ROP 基础与 Pwn 复盘｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 12</p>
+        <h1>第 24 节：ROP 基础与 Pwn 复盘</h1>
+        <p class="lead">不注入新代码，而是重新安排已有指令。</p>
+        <p class="meta">Pwn · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解代码复用</strong></div><div class="card"><strong>认识 Gadget 与调用约定</strong></div><div class="card"><strong>完成最小本地链</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>精确约束比链长重要</h2>
+        <div class="panel">本节只构造可解释的最小链，理解栈、参数和对齐。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Gadget</strong>以返回结束的短指令</div><div class="card"><strong>调用约定</strong>参数放置规则</div><div class="card"><strong>栈对齐</strong>调用状态要求</div><div class="card"><strong>稳定性</strong>环境变化的影响</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>回顾 NX 限制</li><li>寻找最小 Gadget</li><li>画执行前后栈图</li><li>本地验证并记录失败状态</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>链中每个地址做什么？</h2>
+        <p class="lead">能解释它影响的寄存器和下一步执行位置。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较手工链与工具生成结果。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>代码复用本身不是恶意</h2>
+        <p class="lead">问题来自控制流错误被重新组织，修复仍需结合漏洞与防护。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—40 分钟：栈图或失败记录</h2>
+        <p>二选一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>最小、清晰、可复现</h2>
+        <p class="lead">下一模块从文件和流量中恢复线索。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

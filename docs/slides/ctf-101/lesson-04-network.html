@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 4 节：网络基础与信息检索｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 02</p>
+        <h1>第 4 节：网络基础与信息检索</h1>
+        <p class="lead">把“网络不通”拆成几个可以逐一验证的问题。</p>
+        <p class="meta">通用基础 · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解地址、端口与协议</strong></div><div class="card"><strong>阅读一次 HTTP 交互</strong></div><div class="card"><strong>提取有效检索关键词</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>分层让问题有位置</h2>
+        <div class="panel">名称解析、主机可达、服务端口和应用协议分别回答不同问题。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>IP</strong>数据到哪台主机</div><div class="card"><strong>端口</strong>哪项服务接收数据</div><div class="card"><strong>TCP/UDP</strong>如何传输</div><div class="card"><strong>HTTP</strong>如何表达 Web 请求</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>标出请求中的目标与方法</li><li>识别响应状态和内容类型</li><li>比较参数变化前后</li><li>将报错整理为三个检索关键词</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>连接失败发生在哪一层？</h2>
+        <p class="lead">不要急着归因，先确认名称、地址、端口和协议。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>绘制浏览器访问课程站点的时序图。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>VPN、代理和隧道不是同义词</h2>
+        <p class="lead">它们改变流量路径或保护传输，但不能自动提供完整匿名，也不用于绕过管理。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20 分钟：解释一个状态码</h2>
+        <p>写出它表示什么，以及它不能证明什么。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>把大问题拆成小证据</h2>
+        <p class="lead">接下来正式进入 Web，观察浏览器与服务端的状态。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

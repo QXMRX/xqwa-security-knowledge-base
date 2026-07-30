@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 8 节：SQL 注入基础与安全查询｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 04</p>
+        <h1>第 8 节：SQL 注入基础与安全查询</h1>
+        <p class="lead">问题不在某个神秘字符串，而在数据越过了语句边界。</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解拼接查询风险</strong></div><div class="card"><strong>观察输入如何影响结构</strong></div><div class="card"><strong>使用参数化查询修复</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>结构与数据必须分开</h2>
+        <div class="panel">参数化查询分别传递 SQL 模板和参数，让输入保持为数据。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>拼接</strong>输入可能改变结构</div><div class="card"><strong>参数化</strong>模板与数据分离</div><div class="card"><strong>错误回显</strong>影响判断与信息泄露</div><div class="card"><strong>最小权限</strong>限制数据库账号能力</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>阅读本地查询代码</li><li>比较普通与边界输入</li><li>观察错误处理</li><li>参数化改写并回归正常功能</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>修复后正常功能还在吗？</h2>
+        <p class="lead">安全修复需要同时验证异常输入、正常登录和错误处理。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较输入过滤与参数化查询。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>错误信息有两个读者</h2>
+        <p class="lead">用户需要稳定提示，维护者需要受保护的诊断信息。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：提交修复对照</h2>
+        <p>记录问题查询、修复查询和验证结果。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>守住数据与代码的边界</h2>
+        <p class="lead">下一节把同样的边界思维用于文件、模板与服务端请求。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

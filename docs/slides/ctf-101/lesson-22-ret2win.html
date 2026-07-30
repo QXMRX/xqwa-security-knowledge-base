@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 22 节：ret2win 与基础利用脚本｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 11</p>
+        <h1>第 22 节：ret2win 与基础利用脚本</h1>
+        <p class="lead">一条最小教学链，把输入、覆盖与控制流连接起来。</p>
+        <p class="meta">Pwn · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>理解返回地址</strong></div><div class="card"><strong>确认偏移与目标</strong></div><div class="card"><strong>编写本地交互脚本</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>ret2win 是教学模型</h2>
+        <div class="panel">程序故意保留目标函数并弱化防护，帮助观察完整证据链。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>返回地址</strong>函数结束后的执行位置</div><div class="card"><strong>偏移</strong>缓冲区到控制数据的距离</div><div class="card"><strong>字节序</strong>地址的内存排列</div><div class="card"><strong>pwntools</strong>组织本地交互</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>检查架构与保护</li><li>用模式确认偏移</li><li>定位 win 函数</li><li>写脚本并重复验证</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>每段字节都有来源吗？</h2>
+        <p class="lead">填充长度、地址和交互步骤都需要能解释。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>增加脚本日志，不增加远程目标。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>利用脚本也是软件</h2>
+        <p class="lead">可读、可复现、能处理失败，比一次偶然成功更重要。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—40 分钟：注释或控制流图</h2>
+        <p>二选一。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>控制流改变需要精确证据</h2>
+        <p class="lead">下一节看现代系统如何提高这种转换的成本。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

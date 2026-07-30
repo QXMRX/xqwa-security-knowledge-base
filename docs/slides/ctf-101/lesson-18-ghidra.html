@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 18 节：Ghidra 静态分析｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 09</p>
+        <h1>第 18 节：Ghidra 静态分析</h1>
+        <p class="lead">反编译是解释，不是找回原作者源码。</p>
+        <p class="meta">Reverse · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>完成基础分析</strong></div><div class="card"><strong>使用交叉引用定位</strong></div><div class="card"><strong>重命名建立模型</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>伪代码必须交叉验证</h2>
+        <div class="panel">变量名、类型和结构可能不准确，关键结论要回到指令和行为。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>Functions</strong>功能区域</div><div class="card"><strong>Xrefs</strong>线索使用位置</div><div class="card"><strong>Decompiler</strong>高层解释</div><div class="card"><strong>Rename</strong>保存分析结论</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>导入基础 Crackme</li><li>从字符串查引用</li><li>重命名关键函数</li><li>整理流程并运行验证</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>伪代码与行为冲突时信谁？</h2>
+        <p class="lead">优先相信可复现行为和指令证据。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>保存分析前后对照。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>逆向也需要授权与边界</h2>
+        <p class="lead">课程只分析专门提供的练习文件，并尊重许可和知识产权。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：列出关键函数</h2>
+        <p>每个函数一句话职责。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>工具给草图，证据给结论</h2>
+        <p class="lead">下一节组合静态、动态与脚本完成综合题。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

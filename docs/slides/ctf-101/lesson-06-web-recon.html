@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 6 节：Web 信息收集与源码阅读｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 03</p>
+        <h1>第 6 节：Web 信息收集与源码阅读</h1>
+        <p class="lead">收集不是堆工具，而是给每条线索找到来源。</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>整理页面与接口</strong></div><div class="card"><strong>区分事实与推测</strong></div><div class="card"><strong>绘制输入数据流</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>入口、数据、异常</h2>
+        <div class="panel">先理解正常功能，再围绕题目目标筛选能被验证的信息。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>HTML</strong>页面结构与注释</div><div class="card"><strong>JavaScript</strong>接口和参数线索</div><div class="card"><strong>robots.txt</strong>爬虫约定，不是授权</div><div class="card"><strong>错误响应</strong>处理阶段和技术线索</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>列出课程站点功能入口</li><li>阅读脚本并记录接口</li><li>给错误信息标注事实与推测</li><li>画出简化数据流</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>你的发现有证据来源吗？</h2>
+        <p class="lead">每条发现都应指向页面、请求、代码或响应中的具体位置。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>给线索标记已验证、合理推测、待验证。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>公开可见不等于获得授权</h2>
+        <p class="lead">能搜索到域名或页面，不代表可以对它开展安全测试。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20 分钟：整理五条入口</h2>
+        <p>每项附上来源，不要求继续探测。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>信息收集是一张证据地图</h2>
+        <p class="lead">有了地图，下一步看身份和权限边界。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

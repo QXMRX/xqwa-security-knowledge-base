@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 29 节：AI 作为安全工具与攻击面｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 15</p>
+        <h1>第 29 节：AI 作为安全工具与攻击面</h1>
+        <p class="lead">AI 可以生成候选，但不能替你承担事实判断。</p>
+        <p class="meta">AI Security · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>辅助解释代码和日志</strong></div><div class="card"><strong>验证模型结论</strong></div><div class="card"><strong>认识模型侧风险</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>人在回路</h2>
+        <div class="panel">人定义问题，AI 提供候选，工具验证，最后由人记录证据。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>代码解释</strong>对照源码与运行</div><div class="card"><strong>日志归纳</strong>保留原始记录</div><div class="card"><strong>对抗样本</strong>微小变化影响判断</div><div class="card"><strong>投毒/窃取</strong>理解边界，不测真实目标</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>让 AI 提三个风险假设</li><li>为假设设计反证</li><li>用本地证据验证</li><li>比较初答与最终结论</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>结论能指向独立证据吗？</h2>
+        <p class="lead">Writeup 不能以“AI 说”作为技术证据。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较两种提示方式的分析完整性。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>真实敏感数据不该上传</h2>
+        <p class="lead">Token、Cookie、个人信息、内部地址和未公开代码都应留在受控环境。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—30 分钟：记录一次纠错</h2>
+        <p>AI 建议、验证、证据和最终结论。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>让 AI 加速，不让 AI 代签结论</h2>
+        <p class="lead">下一节把所有方法带进轻量模拟赛。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

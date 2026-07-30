@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 7 节：身份认证与访问控制｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 04</p>
+        <h1>第 7 节：身份认证与访问控制</h1>
+        <p class="lead">登录证明你是谁，授权决定你能做什么。</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>区分认证与授权</strong></div><div class="card"><strong>识别对象级权限缺失</strong></div><div class="card"><strong>设计最小权限规则</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>隐藏按钮不是权限控制</h2>
+        <div class="panel">受保护对象的权限判断必须由服务端根据当前身份、动作和资源归属完成。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>认证</strong>当前请求属于谁</div><div class="card"><strong>授权</strong>当前身份能做什么</div><div class="card"><strong>水平越权</strong>访问同级他人资源</div><div class="card"><strong>垂直越权</strong>获得更高权限功能</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>使用两个本地测试账号</li><li>比较资源标识符</li><li>验证服务端权限判断</li><li>补写授权伪代码</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>页面没有入口，接口就安全吗？</h2>
+        <p class="lead">界面限制不能替代服务端检查。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>画管理员、用户、访客的权限矩阵。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>双因素认证不是万能修复</h2>
+        <p class="lead">它降低密码泄露风险，但不能修复越权或不安全的会话设计。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20 分钟：写两条授权规则</h2>
+        <p>分别覆盖查看本人资料和修改他人资料。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>每个对象、每次操作都要授权</h2>
+        <p class="lead">下一节观察输入如何改变数据库查询结构。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

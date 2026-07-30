@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 16 节：汇编与函数调用｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 08</p>
+        <h1>第 16 节：汇编与函数调用</h1>
+        <p class="lead">不必逐行翻译，先追数据、比较、跳转和返回。</p>
+        <p class="meta">Reverse · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>认识寄存器和栈</strong></div><div class="card"><strong>跟踪参数与返回值</strong></div><div class="card"><strong>还原短伪代码</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>汇编是行为描述</h2>
+        <div class="panel">栈帧是一次调用的临时工作区，但实际布局由架构和编译器决定。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>寄存器</strong>CPU 当前状态</div><div class="card"><strong>栈</strong>调用相关临时状态</div><div class="card"><strong>跳转</strong>形成分支与循环</div><div class="card"><strong>调用约定</strong>参数和返回值规则</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>预测短 C 函数行为</li><li>对照反汇编定位数据</li><li>画两个分支控制流</li><li>伪代码还原并验证</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>输入在哪里影响了返回值？</h2>
+        <p class="lead">沿着一个输入追到比较和分支即可，不要求记住全部寄存器。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>比较不同优化级别的输出。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>CPU 看不到源码变量名</h2>
+        <p class="lead">逆向工具中的名称常由分析者重新赋予，需要证据支持。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>25—35 分钟：标注一个函数</h2>
+        <p>参数、比较、分支和返回值四项即可。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>先读控制流，再读每条指令</h2>
+        <p class="lead">下一节用调试器观察这些状态真实运行。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>

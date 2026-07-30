@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第 10 节：Web 综合练习｜CTF 网络安全实战基础</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="assets/css/signal-trace.css?v=20260730c" />
+  </head>
+  <body>
+    <div class="reveal"><div class="slides">
+      <section>
+        <p class="eyebrow">CTF 网络安全实战基础 · Week 05</p>
+        <h1>第 10 节：Web 综合练习</h1>
+        <p class="lead">综合题不是把所有漏洞依次试一遍。</p>
+        <p class="meta">Web · 95 分钟 · Signal / Trace</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">今天能带走什么</p>
+        <h2>三个目标</h2>
+        <div class="grid-three"><div class="card"><strong>建立应用模型</strong></div><div class="card"><strong>优先验证低成本假设</strong></div><div class="card"><strong>完成短版 Writeup</strong></div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">先抓住主线</p>
+        <h2>先理解正常行为</h2>
+        <div class="panel">寻找不符合预期的状态变化，并为每个假设定义可观察结果。</div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">概念地图</p>
+        <h2>四个关键点</h2>
+        <div class="grid-three"><div class="card"><strong>建模</strong>入口、状态、数据流</div><div class="card"><strong>假设</strong>具体且可证伪</div><div class="card"><strong>证据</strong>请求、响应、代码或日志</div><div class="card"><strong>停止条件</strong>避免在同一路径耗尽时间</div></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课堂主线</p>
+        <h2>把猜想变成证据</h2>
+        <ul class="step-list"><li>15 分钟建立地图</li><li>45 分钟验证两条假设</li><li>15 分钟交换线索</li><li>20 分钟整理 Writeup</li></ul>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">检查点</p>
+        <h2>没拿到 Flag 也能完成吗？</h2>
+        <p class="lead">可以。两条有结果的实验记录就是有效产出。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">可选探索</p>
+        <h2>感兴趣再继续</h2>
+        <div class="panel"><span class="warm">Optional</span><p>完成第二题，或为第一题补修复方案。</p></div>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">安全加餐</p>
+        <h2>安全分析与故障排查共享方法</h2>
+        <p class="lead">它们都依赖请求、日志、状态变化和最小复现。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">课后轻任务</p>
+        <h2>20—40 分钟：整理课堂记录</h2>
+        <p>课业繁忙时只补全尝试和结果。</p>
+        <p class="meta">不要求连续打卡；可以提交卡点记录。</p>
+
+      </section>
+
+      <section>
+        <p class="eyebrow">本节收束</p>
+        <h2>比赛速度来自清晰方法</h2>
+        <p class="lead">下一模块进入 Crypto，先把相似外观的机制分开。</p>
+      </section>
+    </div></div>
+    <div class="footer">CTF 101 · Signal / Trace</div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade', transitionSpeed: 'fast' });</script>
+  </body>
+</html>
