@@ -4,7 +4,7 @@ audience: 全体成员
 status: stable
 owner: QXMRX
 review_cycle: quarterly
-updated_at: 2026-07-29
+updated_at: 2026-07-30
 ---
 
 # XQWA Security Knowledge Base
@@ -31,7 +31,7 @@ updated_at: 2026-07-29
 - AI Review 说明。
 - 许可证建议。
 
-后续阶段会逐步加入课程模块、实验模板、练习题和检索问答能力。当前 Pages 阅读界面已使用 Docsify 组装并通过 GitHub Actions 部署。
+当前已加入 [CTF 网络安全实战基础](courses/ctf-101/index.md) 的课程首页、学习指南和第 1 周资料。后续会逐步补充实验模板、练习题和检索问答能力。当前 Pages 阅读界面已使用 Docsify 组装并通过 GitHub Actions 部署。
 
 ## 协作要求
 
