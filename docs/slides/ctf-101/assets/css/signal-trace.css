@@ -34,6 +34,9 @@
 .reveal .flow span { background: #111c31; border: 1px solid #274568; border-radius: 10px; padding: 0.45em 0.6em; }
 .reveal .flow b { color: #f4b942; }
 .reveal .footer { bottom: 18px; color: #aab7cf; font-size: 0.36em; left: 30px; position: fixed; }
+.deck-actions { display: flex; gap: 8px; position: fixed; right: 18px; top: 18px; z-index: 20; }
+.deck-actions a { backdrop-filter: blur(10px); background: rgba(11, 16, 32, 0.82); border: 1px solid #274568; border-radius: 999px; color: #8ee7ff; font: 600 13px/1 "Inter", "Noto Sans SC", sans-serif; padding: 9px 12px; text-decoration: none; }
+.deck-actions a:hover { background: #14233c; border-color: #48c6ef; }
 .reveal .progress { color: #48c6ef; height: 4px; }
 .reveal .meta { color: #aab7cf; font-size: 0.55em; margin-top: 1.5em; }
 .reveal .step-list { counter-reset: step; list-style: none; margin-left: 0; }
@@ -41,4 +44,4 @@
 .reveal .step-list li::before { border: 1px solid #48c6ef; border-radius: 50%; color: #48c6ef; content: counter(step); font-size: 0.65em; height: 1.55em; left: 0; line-height: 1.55em; position: absolute; text-align: center; top: 0.18em; width: 1.55em; }
 .reveal table { font-size: 0.66em; }
 .reveal table th { color: #48c6ef; }
-@media (max-width: 800px) { .reveal .grid, .reveal .grid-three { grid-template-columns: 1fr; } }
+@media (max-width: 800px) { .reveal .grid, .reveal .grid-three { grid-template-columns: 1fr; } .deck-actions { right: 8px; top: 8px; } }

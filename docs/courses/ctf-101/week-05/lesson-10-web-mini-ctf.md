@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 10 节：Web 综合练习
 
 > Web · 95 分钟 · 小型 Jeopardy 练习
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -32,7 +36,32 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-从课程本地题或当期可用的 BUUCTF 入门 Web 题中选择一题。平台题只作为授权环境替代，题名和可用性由教师在授课前确认。
+从 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中选择一道人为核验可用的入门 Web 题。归档题或动态实例不可用时，才切换仓库本地 Web 应用和下方记录模板。
+
+## 实操模板：建立可复现记录
+
+先为本地题建立独立记录目录，不在命令中填写公网域名：
+
+```bash
+mkdir -p /tmp/ctf101-web-review
+cd /tmp/ctf101-web-review
+printf '# Web 综合记录\n\n## 正常行为\n\n## 假设\n\n## 证据\n\n## 结论\n' > notes.md
+curl -sS -D response-headers.txt http://127.0.0.1:8080/ -o response-body.html
+sha256sum response-headers.txt response-body.html
+```
+
+对每条假设填写：
+
+```text
+观察：我看到了什么？
+假设：哪个信任边界可能有问题？
+操作：我只在课程靶场改变了什么？
+预期：如果假设成立，应出现什么？
+实际：状态码、页面或日志发生了什么？
+结论：支持、否定，还是证据不足？
+```
+
+保存原始响应与摘要，避免复盘时只剩截图。若本地服务端口不同，先由教师给出地址；不要把示例替换成随机公网目标。课程结束后停止本地容器或服务，并按实验说明清理临时实例。
 
 ## 检查点
 
@@ -55,6 +84,10 @@ updated_at: 2026-07-30
 - 同一假设重复尝试：为它设定停止条件。
 - 直接搜索完整题解：先明确自己缺的是概念、工具还是一个提示。
 - Writeup 只有命令：补上为什么执行和如何判断结果。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

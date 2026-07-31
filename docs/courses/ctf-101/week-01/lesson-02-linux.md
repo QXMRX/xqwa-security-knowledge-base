@@ -4,10 +4,14 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 2 节：Linux 与终端基础
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -19,7 +23,7 @@ updated_at: 2026-07-30
 
 ## 准备内容
 
-- 课程提供的 Linux 虚拟机、容器或终端环境。
+- 能运行常见 GNU/Linux 命令的本地虚拟机、容器或终端；也可使用课前核验的 BUUCTF `Linux Labs`。
 - 不建议在个人重要文件夹中练习删除或权限修改命令。
 
 ## 为什么值得学
@@ -47,7 +51,7 @@ updated_at: 2026-07-30
 
 ## 课堂主线：从目录中找线索
 
-在课程提供的练习目录中完成以下任务：
+优先在课前核验的 BUUCTF `Linux Labs` 中完成；平台不可用时，在下方明确创建的 `/tmp/ctf101-linux` 练习目录中完成：
 
 1. 用 `pwd` 确认当前目录。
 2. 用 `ls` 查看可见文件。
@@ -62,6 +66,27 @@ pwd
 ls -la
 grep -R "flag" .
 ```
+
+## 离线替代：建立并检查练习目录
+
+所有操作都发生在 `/tmp/ctf101-linux`，不会修改系统配置：
+
+```bash
+mkdir -p /tmp/ctf101-linux/logs
+printf 'welcome\ntry the logs directory\n' > /tmp/ctf101-linux/README.txt
+printf 'INFO start\nDEBUG flag{local_search}\n' > /tmp/ctf101-linux/logs/app.log
+printf 'remember hidden files\n' > /tmp/ctf101-linux/.hint
+cd /tmp/ctf101-linux
+
+pwd
+ls -la
+file README.txt logs/app.log
+grep -R -n "flag{" .
+```
+
+`grep` 的输出应同时包含文件路径、行号和匹配内容。然后用 `head -n 1 logs/app.log` 与 `tail -n 1 logs/app.log` 比较开头和结尾。遇到错误时先逐条运行，不要忽略中间失败。
+
+实验完成后运行 `cd -` 返回原目录。确认临时路径准确后再清理；不要让递归删除命令接收空变量或宽泛目录。
 
 ## 检查点
 
@@ -87,5 +112,6 @@ grep -R "flag" .
 
 ## 延伸资料
 
-- [课程课件：第 2 节](../../../slides/ctf-101/lesson-02-linux.html)
-- [课程学习指南](../learning-guide.md)
+- [课程课件：第 2 节](/slides/ctf-101/lesson-02-linux.html ":ignore")
+- [课程学习指南](/courses/ctf-101/learning-guide.md)
+- [分方向课程学习资源](/courses/ctf-101/resources.md)

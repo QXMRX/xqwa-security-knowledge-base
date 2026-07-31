@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 24 节：ROP 基础与 Pwn 复盘
 
 > Pwn · 95 分钟 · 只构造最小本地链
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,28 @@ ROP 不向数据区写入新代码，而是按需要串联程序或库中已有�
 3. 在纸上画出 ROP 执行前后的栈布局。
 4. 用本地脚本验证，并记录失败时的寄存器与栈状态。
 
+## 离线替代流程：从调用约定到栈图
+
+优先分析课前核验的 BUUCTF `ciscn_2019_n_1` 候选题。平台不可用时，先运行 `make -C labs/ctf-101/binary rop_demo`，再只对仓库生成的本地程序分析：
+
+```bash
+file labs/ctf-101/binary/rop_demo
+checksec --file=labs/ctf-101/binary/rop_demo
+objdump -d -M intel labs/ctf-101/binary/rop_demo | less
+ROPgadget --binary labs/ctf-101/binary/rop_demo --only 'pop|ret'
+```
+
+先在纸上记录每个候选 Gadget 的前置状态和效果：
+
+```text
+栈顶值 → 被哪个 pop 取走
+哪些寄存器被修改
+ret 从哪里取得下一地址
+调用前栈是否满足平台对齐要求
+```
+
+在 GDB 中使用 `break *地址`、`x/16gx $sp`、`info registers` 和 `si` 单步验证。目标是完成教师规定的最小本地函数调用，不构造命令执行、持久化或远程链。若验证失败，保存崩溃前的栈图并解释哪项约束没有满足，同样算有效产出。
+
 ## 检查点
 
 能够解释链中每个地址执行什么、影响哪个寄存器，比成功复制一条长链更重要。
@@ -58,6 +84,10 @@ ROP 不向数据区写入新代码，而是按需要串联程序或库中已有�
 - Gadget 越多越好：优先最小、可解释的链。
 - 忽略调用约定：先确认参数寄存器和对齐要求。
 - 环境稍变就失败：记录二进制、库和保护配置。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

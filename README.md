@@ -44,14 +44,12 @@ AI Review 通过手动 GitHub Actions 工作流调用 DeepSeek API 生成报告�
 ## 快速开始
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python scripts/check_all.py
-python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
-python scripts/build_pages_site.py --output /tmp/xqwa-pages-preview
-mkdocs build --strict
-mkdocs serve
+uv sync
+uv run python scripts/check_all.py
+uv run python scripts/ai_review.py --dry-run --base origin/main --output /tmp/ai-review-dry-run.md
+uv run python scripts/build_pages_site.py --output /tmp/xqwa-pages-preview
+uv run mkdocs build --strict
+uv run mkdocs serve
 ```
 
 本地预览启动后，访问 `http://127.0.0.1:8000`。

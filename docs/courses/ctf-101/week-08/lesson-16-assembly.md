@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 16 节：汇编与函数调用
 
 > Reverse · 95 分钟 · 只掌握够用的阅读能力
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,35 @@ updated_at: 2026-07-30
 3. 画出两个分支的控制流。
 4. 写出不追求语法完整的伪代码并运行原程序验证。
 
+## 离线替代：对照 C 与反汇编
+
+```c
+int classify(int value) {
+    if (value > 10) {
+        return value * 2;
+    }
+    return value - 1;
+}
+```
+
+仓库已提供 `labs/ctf-101/binary/classify.c`。从仓库根目录进入实验目录，再编译目标文件并查看 `classify`：
+
+```bash
+cd labs/ctf-101/binary
+cc -Wall -Wextra -O0 -g -c classify.c -o classify.o
+objdump -d -M intel classify.o
+objdump -S -M intel classify.o
+```
+
+按以下顺序标注，不要求逐条翻译：
+
+1. 参数从哪里进入函数。
+2. 哪条比较决定分支。
+3. 两条路径分别怎样计算返回值。
+4. 函数在哪里返回。
+
+再用 `cc -O2 -c classify.c -o classify-o2.o` 比较优化版本。汇编布局不同不代表行为不同；用多组输入运行完整程序验证伪代码。
+
 ## 检查点
 
 不要求记住全部寄存器；应能沿着一个输入找到它参与比较和影响返回值的位置。
@@ -58,6 +91,10 @@ updated_at: 2026-07-30
 - 试图逐条翻译：先识别基本块和控制流。
 - 混淆数值与地址：结合指令用途和内存访问判断。
 - 被陌生指令卡住：先查官方指令语义，再看它是否影响主线。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

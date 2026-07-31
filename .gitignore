@@ -168,6 +168,16 @@ venv.bak/
 /site
 /_site
 
+# Reproducible CTF 101 lab outputs
+/labs/ctf-101/generated/
+/labs/ctf-101/binary/hello_binary
+/labs/ctf-101/binary/classify
+/labs/ctf-101/binary/memory_map
+/labs/ctf-101/binary/stack_demo
+/labs/ctf-101/binary/ret2win_demo
+/labs/ctf-101/binary/guard_demo
+/labs/ctf-101/binary/rop_demo
+
 # mypy
 .mypy_cache/
 .dmypy.json

@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 29 节：AI 作为安全工具与攻击面
 
 > AI Security · 95 分钟 · 人在回路
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,34 @@ AI 适合加速阅读、生成候选和整理信息，不适合替你承担事�
 3. 使用本地运行或静态证据逐项验证。
 4. 比较模型初答与最终结论，记录被纠正的部分。
 
+## 实操模板：把 AI 输出变成待验证假设
+
+BUUCTF 当前没有与本节稳定匹配的公开候选题。使用仓库内去敏代码和 `labs/ctf-101/samples/llm-documents.json`，不把 BUUCTF 附件、未公开题面或动态实例信息上传给外部模型。
+
+先删除代码中的真实凭据、个人路径和未公开数据，再将模型建议保存为结构化记录：
+
+```python
+from dataclasses import dataclass
+
+
+@dataclass
+class Hypothesis:
+    claim: str
+    evidence_needed: str
+    status: str = "unverified"
+
+
+hypotheses = [
+    Hypothesis("长度判断可能存在边界错误", "边界值测试与对应源码分支"),
+    Hypothesis("摘要用途可能被误解", "调用位置、输入来源和验证逻辑"),
+]
+
+for item in hypotheses:
+    print(f"[{item.status}] {item.claim} -> {item.evidence_needed}")
+```
+
+验证时优先运行项目已有测试，再写最小本地测试。最终报告分别列出“模型提出、证据支持、证据否定、尚未验证”，禁止把模型语气或生成的模拟输出当作真实测试结果。
+
 ## 检查点
 
 最终 Writeup 中的每条技术结论都应能指向独立证据，而不是“AI 说”。
@@ -58,6 +90,10 @@ AI 适合加速阅读、生成候选和整理信息，不适合替你承担事�
 - 提示词越长越可信：质量仍取决于证据与验证。
 - 直接运行模型生成命令：先理解范围、参数和副作用。
 - 删除原始日志：归纳结果不能替代原始材料。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

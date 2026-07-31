@@ -1,0 +1,5 @@
+- [课程首页](/courses/ctf-101/)
+- [学习资源](/courses/ctf-101/resources.md)
+- [远程授课指南](/courses/ctf-101/remote-teaching.md)
+- [幻灯片](/courses/ctf-101/slides.md)
+- [离线实验包](/labs/ctf-101/README.md)

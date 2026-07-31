@@ -20,6 +20,11 @@ nav:
       - 学习指南: courses/ctf-101/learning-guide.md
       - 视觉与内容标准: courses/ctf-101/art-direction.md
       - 题目与平台规划: courses/ctf-101/platform-plan.md
+      - BUUCTF 优先实验题单: courses/ctf-101/buuctf-labs.md
+      - 远程授课指南: courses/ctf-101/remote-teaching.md
+      - 教师授课手册: courses/ctf-101/instructor-guide.md
+      - 学习资源: courses/ctf-101/resources.md
+      - 幻灯片索引: courses/ctf-101/slides.md
       - 第 1 周:
           - 什么是 CTF: courses/ctf-101/week-01/lesson-01-ctf.md
           - Linux 与终端基础: courses/ctf-101/week-01/lesson-02-linux.md

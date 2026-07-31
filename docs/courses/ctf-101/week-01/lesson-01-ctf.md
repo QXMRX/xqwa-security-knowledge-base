@@ -4,10 +4,14 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 1 节：什么是 CTF
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -57,7 +61,7 @@ Flag 是证明你完成挑战的一段特定文本，常见形式类似 `flag{ex
 
 ## 课堂主线：完成你的第一道题
 
-在课程提供的本地题面中找到一段看起来像 Base64 的文本。尝试回答：它为什么像 Base64？解码后得到了什么？结果是否符合 Flag 格式？
+优先完成教师已核验的 BUUCTF `签到` 候选题。若归档题不可用，则使用下方 Base64 离线替代。尝试回答：它为什么像 Base64？解码后得到了什么？结果是否符合 Flag 格式？
 
 建议流程：
 
@@ -65,6 +69,25 @@ Flag 是证明你完成挑战的一段特定文本，常见形式类似 `flag{ex
 2. 使用可信的本地工具或 Python 解码。
 3. 核对输出是否可读、是否符合题目上下文。
 4. 把你的判断写成两三句话。
+
+## 离线替代：验证一段 Base64
+
+下面的示例只处理课程内的虚构 Flag，不需要访问任何网站。先观察输入，再运行解码：
+
+```bash
+python3 - <<'PY'
+import base64
+
+sample = "ZmxhZ3tmaXJzdF9ldmlkZW5jZX0="
+decoded = base64.b64decode(sample)
+print("原始字节：", decoded)
+print("UTF-8 文本：", decoded.decode("utf-8"))
+PY
+```
+
+预期看到 `flag{first_evidence}`。记录时不要只写结果，还要写出判断依据：字符集合主要由字母、数字组成，长度是 4 的倍数，末尾存在 `=` 填充。然后修改一个字符再次运行，观察“成功解码”和“结果合理”并不是同一件事。
+
+实验结束后无需清理文件；关闭终端即可。若出现 `Incorrect padding`，先检查复制时是否丢失末尾字符，而不是随意追加大量 `=`。
 
 ## 检查点
 
@@ -90,5 +113,6 @@ Flag 是证明你完成挑战的一段特定文本，常见形式类似 `flag{ex
 
 ## 延伸资料
 
-- [课程学习指南](../learning-guide.md)
-- [课程课件：第 1 节](../../../slides/ctf-101/lesson-01-ctf.html)
+- [课程学习指南](/courses/ctf-101/learning-guide.md)
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
+- [课程课件：第 1 节](/slides/ctf-101/lesson-01-ctf.html ":ignore")

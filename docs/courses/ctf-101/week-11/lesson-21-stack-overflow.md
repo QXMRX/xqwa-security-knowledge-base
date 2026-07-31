@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 21 节：栈溢出原理与安全修复
 
 > Pwn · 95 分钟 · 本地专用漏洞程序
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -32,10 +36,33 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-1. 运行教师提供的安全版本与漏洞版本。
+1. 优先分析课前核验的 BUUCTF Pwn 候选题；平台不可用时使用仓库 `stack_demo.c`。
 2. 从短输入开始逐步观察边界现象。
 3. 在调试器中确认被覆盖的相邻状态。
 4. 使用长度限制或安全接口修复，并回归正常输入。
+
+## 离线替代：用检测器观察边界错误
+
+本节不关闭系统防护。离线替代源码位于 `labs/ctf-101/binary/stack_demo.c`。从仓库根目录执行 `cd labs/ctf-101/binary`，再分别构建普通版和地址检测版：
+
+```bash
+cc -Wall -Wextra -g -O0 stack_demo.c -o stack_demo
+cc -Wall -Wextra -g -O0 -fsanitize=address,undefined \
+  -fno-omit-frame-pointer stack_demo.c -o stack_demo_asan
+./stack_demo_asan short
+./stack_demo_asan "$(python3 -c 'print("A" * 80)')"
+```
+
+报告中标注错误类型、发生函数、写入大小和调用栈。随后将无边界复制改成显式容量检查，例如：
+
+```c
+if (snprintf(buffer, sizeof(buffer), "%s", input) >= (int)sizeof(buffer)) {
+    fputs("input too long\n", stderr);
+    return 1;
+}
+```
+
+重新编译后同时回归短输入、边界长度和超长输入。只报告检测器实际证明的影响，不把一次崩溃直接表述为控制流可控。
 
 ## 检查点
 
@@ -58,6 +85,10 @@ updated_at: 2026-07-30
 - 一次崩溃就宣称可利用：继续确认覆盖对象和控制流证据。
 - 只缩短测试输入：真正修复应在程序中检查边界。
 - 忽略返回值：安全接口也需要处理失败情况。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

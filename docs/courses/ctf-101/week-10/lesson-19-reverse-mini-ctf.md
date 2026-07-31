@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 19 节：混淆、校验与 Reverse 综合
 
 > Reverse · 95 分钟 · 综合 Crackme
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -32,10 +36,38 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-1. 选择课程 Crackme 或当期可用的 BUUCTF 入门 Reverse 题。
+1. 优先选择题单中课前核验的 BUUCTF Reverse 候选题；平台不可用时使用 `labs/ctf-101/binary/hello_binary`。
 2. 建立输入—变换—比较—输出流程。
 3. 选择一个局部算法写脚本复现。
 4. 用程序运行结果验证脚本，并整理 Writeup。
+
+## 离线替代：复现一个校验变换
+
+假设静态与动态分析表明，课程程序逐字节执行“加 3 后 XOR 0x20”。先独立复现，不直接修改原程序：
+
+```python
+def transform(data: bytes) -> bytes:
+    return bytes(((value + 3) & 0xFF) ^ 0x20 for value in data)
+
+
+sample = b"CTF"
+expected = bytes([0x66, 0x77, 0x69])
+actual = transform(sample)
+print("输入：", sample)
+print("输出：", actual.hex())
+print("匹配：", actual == expected)
+```
+
+若结果不匹配，依次检查常量、运算顺序、字节溢出和循环边界。Writeup 应包含：
+
+```text
+低成本画像 → 关键字符串/函数 → 动态验证点
+→ 局部算法伪代码 → 复现脚本 → 两组输入验证
+```
+
+不要以反编译伪代码截图代替解释，也不要分析来源不明或无授权的软件。
+
+结束时关闭调试器，停止 BUUCTF 动态实例；离线二进制可用 `make -C labs/ctf-101/binary clean` 清理。
 
 ## 检查点
 
@@ -58,6 +90,10 @@ Writeup 应说明工具为什么在该步骤有用，而不是只罗列操作截
 - 想理解每个函数：先追成功路径。
 - 静态和动态结论冲突：缩小到一个输入和一个分支重验。
 - 复制脚本后无法解释：逐行标注数据含义。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

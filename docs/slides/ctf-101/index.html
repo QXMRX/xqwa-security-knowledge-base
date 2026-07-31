@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CTF 网络安全实战基础｜课件</title>
     <style>
-      body { background: #0b1020; color: #e6edf7; font-family: Inter, "Noto Sans SC", sans-serif; margin: 0; padding: 8vh max(24px, 10vw); }
-      h1 { font-size: clamp(2rem, 5vw, 4rem); } a { color: #48c6ef; } li { margin: 1rem 0; }
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { background: radial-gradient(circle at 80% 0%, #183250, #0b1020 36rem); color: #e6edf7; font-family: Inter, "Noto Sans SC", sans-serif; margin: 0; padding: 7vh max(24px, 8vw); }
+      header { max-width: 850px; } h1 { font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: -.05em; margin: .2em 0; }
+      .eyebrow, a { color: #48c6ef; } .lead { color: #aab7cf; font-size: 1.1rem; line-height: 1.7; }
+      .back { border: 1px solid #274568; border-radius: 999px; display: inline-block; padding: .65rem 1rem; text-decoration: none; }
+      h2 { border-top: 1px solid #274568; margin-top: 3rem; padding-top: 1.5rem; }
+      ul { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); list-style: none; padding: 0; }
+      li { background: rgba(17, 28, 49, .78); border: 1px solid #274568; border-radius: 12px; }
+      li a { display: block; line-height: 1.45; padding: 1rem; text-decoration: none; } li:hover { border-color: #48c6ef; transform: translateY(-2px); }
     </style>
   </head>
   <body>
-    <p>CTF 网络安全实战基础 / Signal · Trace</p>
+    <header>
+    <p class="eyebrow">CTF 网络安全实战基础 / Signal · Trace</p>
     <h1>课程课件</h1>
+    <p class="lead">幻灯片用于远程授课时提炼主线，详细解释、操作记录与延伸资源请回到对应讲义。两种材料相互关联，但保持不同的信息密度。</p>
+    <a class="back" href="../../#/courses/ctf-101/index.md">← 返回 Docsify 课程首页</a>
+    </header>
     <h2>第 1—4 周 · 通用基础与 Web</h2>
     <ul>
       <li><a href="lesson-01-ctf.html">第 1 节：什么是 CTF</a></li>

@@ -7,6 +7,7 @@ on:
     paths:
       - "docs/**"
       - "docsify/**"
+      - "labs/ctf-101/**"
       - "scripts/build_pages_site.py"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
@@ -34,8 +35,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: uv sync --locked
+
       - name: Assemble Docsify site
-        run: python scripts/build_pages_site.py --output _site
+        run: uv run python scripts/build_pages_site.py --output _site
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

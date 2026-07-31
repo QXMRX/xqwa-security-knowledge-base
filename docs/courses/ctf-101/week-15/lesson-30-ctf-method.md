@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 30 节：CTF 比赛方法与模拟赛
 
 > 综合 · 95 分钟 · 轻量模拟赛
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,26 @@ updated_at: 2026-07-30
 3. 15 分钟交换卡点记录，允许更换题目。
 4. 25 分钟完成第二轮尝试和短复盘。
 
+## 比赛工作目录与计时记录
+
+```bash
+mkdir -p /tmp/ctf101-simulation/{attachments,notes,scripts}
+cd /tmp/ctf101-simulation
+printf '开始时间：%s\n题目：\n授权环境：课程本地靶场\n\n' "$(date -Iseconds)" > notes/timeline.md
+sha256sum attachments/* 2>/dev/null >> notes/attachment-hashes.txt
+```
+
+每 15 分钟追加一次状态：
+
+```text
+当前观察：
+正在验证的假设：
+已获得的证据：
+下一步与停止条件：
+```
+
+切题条件可以是“连续两轮没有新证据”“依赖环境不可用”或“另一题已有更低成本入口”。保存小脚本时写明输入、输出和适用题目，不将临时平台凭据写入文件。结束后停止题目实例，并保留去敏后的笔记用于复盘。
+
 ## 检查点
 
 一道题投入超过时间盒仍没有新信息时，切换题目是策略，不是失败。
@@ -58,6 +82,10 @@ updated_at: 2026-07-30
 - 全员挤在同一题：定期同步并主动分流。
 - 工具临时失效：准备最小替代方案和版本记录。
 - 只报结果不报过程：交接时附上证据和环境。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

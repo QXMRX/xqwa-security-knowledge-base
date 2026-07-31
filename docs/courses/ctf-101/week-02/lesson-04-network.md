@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 4 节：网络基础与信息检索
 
 > 通用基础 · 95 分钟 · 只观察课程环境流量
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -33,10 +37,32 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-1. 阅读一份课程提供的请求与响应记录。
+1. 阅读 `labs/ctf-101/samples/http-exchange.txt` 中的请求与响应记录。
 2. 标出域名、路径、方法、状态码和内容类型。
 3. 改变一个无害参数，比较两次响应。
 4. 从一个报错中提取“工具名 + 错误核心 + 环境”三个搜索关键词。
+
+## 离线替代：观察一次 HTTP 连接
+
+先运行 `sed -n '1,80p' labs/ctf-101/samples/http-exchange.txt`，标出请求行、Host、Cookie、状态行和 Content-Type。
+
+终端 A 启动只监听本机的服务：
+
+```bash
+mkdir -p /tmp/ctf101-http
+printf 'network layer check\n' > /tmp/ctf101-http/index.html
+python3 -m http.server 8080 --bind 127.0.0.1 --directory /tmp/ctf101-http
+```
+
+终端 B 依次运行：
+
+```bash
+curl -i http://127.0.0.1:8080/
+curl -I http://127.0.0.1:8080/missing
+ss -ltn
+```
+
+第一条应看到 `200 OK` 和正文；第二条应看到 `404 File not found`。这里的 `127.0.0.1` 是本机，`8080` 是端口，HTTP 规定消息格式。如果出现 `Connection refused`，先确认服务是否仍在运行、端口是否一致。结束时在终端 A 按 `Ctrl+C`。
 
 ## 检查点
 
@@ -59,6 +85,10 @@ updated_at: 2026-07-30
 - 把 DNS 当作网络本身：DNS 只解决名称到地址的映射。
 - 只复制整段报错搜索：先删除个人路径和无关变量。
 - 修改请求后无变化：比较请求是否真的发出以及响应是否来自缓存。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

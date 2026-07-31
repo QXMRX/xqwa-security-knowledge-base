@@ -1,0 +1,4 @@
+# 类型,数据
+hex,666c61677b6865785f65766964656e63657d
+base64,ZmxhZ3tiYXNlNjRfZXZpZGVuY2V9
+text,flag{plain_text_is_not_encoded}

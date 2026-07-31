@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 7 节：身份认证与访问控制
 
 > Web · 95 分钟 · 本地多用户靶场
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -32,10 +36,50 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-1. 使用课程提供的两个测试账号登录本地应用。
+1. 启动 `labs/ctf-101/web/training_app.py`，使用 Alice 与 Bob 两个虚构身份。
 2. 比较各自可访问的资源标识符。
 3. 在授权范围内验证服务端是否检查资源所有者。
 4. 用伪代码补上服务端权限检查，并讨论错误响应。
+
+## 实操代码：把授权写成明确规则
+
+终端 A 运行 `uv run python labs/ctf-101/web/training_app.py`。终端 B 验证 Alice 只能读取自己的文档：
+
+```bash
+curl -sS -c /tmp/alice-cookie.txt 'http://127.0.0.1:8081/login?user=alice'
+curl -sS -b /tmp/alice-cookie.txt 'http://127.0.0.1:8081/document?id=doc-a'
+curl -i -b /tmp/alice-cookie.txt 'http://127.0.0.1:8081/document?id=doc-b'
+```
+
+第三条应返回 `403 Forbidden`。停止本地服务后删除教学 Cookie 文件。
+
+下面的纯 Python 示例不启动网络服务，只验证对象级授权：
+
+```python
+DOCUMENTS = {
+    "doc-a": {"owner": "alice", "content": "Alice 的教学记录"},
+    "doc-b": {"owner": "bob", "content": "Bob 的教学记录"},
+}
+
+
+def read_document(user: dict, document_id: str) -> str:
+    document = DOCUMENTS.get(document_id)
+    if document is None:
+        raise LookupError("资源不存在")
+    if user["role"] != "admin" and document["owner"] != user["name"]:
+        raise PermissionError("无权访问该资源")
+    return document["content"]
+
+
+alice = {"name": "alice", "role": "member"}
+for document_id in ("doc-a", "doc-b"):
+    try:
+        print(document_id, read_document(alice, document_id))
+    except (LookupError, PermissionError) as error:
+        print(document_id, type(error).__name__, error)
+```
+
+运行后，Alice 应只能读取 `doc-a`。分别修改用户角色、对象所有者和不存在的 ID，验证每个分支。关键检查必须位于服务端敏感操作之前，不能只依赖前端是否显示按钮。
 
 ## 检查点
 
@@ -58,6 +102,10 @@ updated_at: 2026-07-30
 - 把登录成功当作拥有全部权限。
 - 只检查用户角色，不检查资源归属。
 - 使用真实账号实验：课堂统一使用虚构测试账户。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 
