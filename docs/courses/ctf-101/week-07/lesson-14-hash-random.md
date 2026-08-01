@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 14 节：哈希、随机数与脚本化分析
 
 > Crypto · 95 分钟 · 从安全性质出发
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,32 @@ updated_at: 2026-07-30
 3. 分析一个固定种子或时间种子的教学随机序列。
 4. 写脚本验证预测，并给出更安全的设计方向。
 
+## 实操代码：摘要、盐与随机源
+
+```python
+import hashlib
+import random
+import secrets
+
+for value in (b"lesson", b"Lesson"):
+    print(value, hashlib.sha256(value).hexdigest())
+
+password = b"training-password"
+salt_a = b"user-a"
+salt_b = b"user-b"
+print(hashlib.pbkdf2_hmac("sha256", password, salt_a, 100_000).hex())
+print(hashlib.pbkdf2_hmac("sha256", password, salt_b, 100_000).hex())
+
+predictable_a = random.Random(2026)
+predictable_b = random.Random(2026)
+assert predictable_a.randrange(1_000_000) == predictable_b.randrange(1_000_000)
+print("安全用途示例：", secrets.token_hex(16))
+```
+
+相同种子产生相同伪随机序列，适合可复现实验，不适合生成会话密钥。`secrets` 面向安全用途，但令牌仍需足够长度、服务端保护、过期和撤销机制。密码存储应优先采用 Argon2、scrypt 等专用方案；PBKDF2 此处只用于展示盐的作用。
+
+输出中的随机教学令牌没有连接任何账号，关闭终端即可，不要将其误作真实凭据。
+
 ## 检查点
 
 “随机种子未知”不自动等于安全；还要考虑种子空间、可观察输出和生成器用途。
@@ -58,6 +88,10 @@ updated_at: 2026-07-30
 - 把碰撞与还原原文混为一谈。
 - 使用普通随机模块生成密码或 Token。
 - 只比较最终值：记录种子、输入格式和生成步骤。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

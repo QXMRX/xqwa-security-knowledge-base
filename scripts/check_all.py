@@ -11,6 +11,8 @@ CHECKS = (
     ("Markdown structure", ["check_markdown.py"]),
     ("Documentation metadata", ["check_metadata.py"]),
     ("Security content", ["check_security_content.py"]),
+    ("CTF 101 handout/slide sync", ["check_course_sync.py"]),
+    ("CTF 101 independent-teaching content", ["check_course_content.py"]),
     ("Docsify Pages assembly", ["build_pages_site.py", "--output", "/tmp/xqwa-pages-check"]),
 )
 

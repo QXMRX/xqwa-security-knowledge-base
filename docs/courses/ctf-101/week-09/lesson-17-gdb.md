@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 17 节：GDB 动态调试
 
 > Reverse · 95 分钟 · 本地程序
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,35 @@ updated_at: 2026-07-30
 3. 单步越过比较，观察标志和分支变化。
 4. 使用两组输入验证对校验逻辑的理解。
 
+## 离线替代：用断点回答具体问题
+
+从仓库根目录构建并调试第 15 节程序：
+
+```bash
+make -C labs/ctf-101/binary hello_binary
+cd labs/ctf-101/binary
+gdb -q ./hello_binary
+```
+
+在 GDB 中执行：
+
+```text
+set pagination off
+break check
+run training
+info args
+info registers
+disassemble /m check
+next
+finish
+print $rax
+run wrong
+```
+
+每个断点记录“位置、预期、实际、结论”。`run` 第二次执行时 GDB 会询问是否重启，确认后比较两组输入。若找不到源码行，检查程序是否带 `-g`；若断点名称不存在，先用 `info functions check` 查看符号。用 `quit` 退出，不修改系统调试设置。
+
+课程结束后运行 `make -C labs/ctf-101/binary clean` 清理本地构建产物；BUUCTF 下载附件按教师规定保留或删除。
+
 ## 检查点
 
 每次停下前先写“我预期看到什么”；停下后再记录实际状态。
@@ -58,6 +91,10 @@ updated_at: 2026-07-30
 - 断点太多：围绕一个具体猜想设置。
 - 地址每次变化：先了解 PIE/ASLR，再使用符号或相对位置。
 - 单步迷失在库函数：区分进入和跨过调用。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

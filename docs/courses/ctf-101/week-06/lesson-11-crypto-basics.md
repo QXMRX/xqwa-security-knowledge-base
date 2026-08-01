@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 11 节：编码、加密与哈希
 
 > Crypto · 95 分钟 · 概念分界课
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -36,6 +40,29 @@ updated_at: 2026-07-30
 3. 使用本地工具验证编码，不以在线工具上传未知数据。
 4. 记录错误猜想为什么被排除。
 
+## 实操代码：同一数据的三种表示
+
+```python
+import base64
+import hashlib
+
+message = "CTF evidence"
+raw = message.encode("utf-8")
+
+print("文本：", message)
+print("字节：", raw)
+print("十六进制：", raw.hex())
+print("Base64：", base64.b64encode(raw).decode())
+print("SHA-256：", hashlib.sha256(raw).hexdigest())
+
+assert bytes.fromhex(raw.hex()) == raw
+assert base64.b64decode(base64.b64encode(raw)) == raw
+```
+
+十六进制和 Base64 都能无密钥还原，因此是编码；SHA-256 输出不能用对应的“解码函数”恢复原文，因此是摘要。把 `message` 改一个字符，比较三种输出变化。不要把未知敏感数据上传到在线转换站。
+
+本节脚本不创建文件或后台进程，无需额外清理。
+
 ## 检查点
 
 你应能解释：Base64 能还原原文，因此不能为敏感信息提供保密性。
@@ -57,6 +84,10 @@ updated_at: 2026-07-30
 - 看到长字符串就判断为哈希：先看长度、字符集和上下文。
 - 把“不可读”当“安全”：可读性不是安全性质。
 - 上传未知题目文件到在线工具：优先使用本地环境。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

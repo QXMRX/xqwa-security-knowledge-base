@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 6 节：Web 信息收集与源码阅读
 
 > Web · 95 分钟 · 仅限课程站点
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,30 @@ updated_at: 2026-07-30
 3. 对一个本地错误页面区分事实、推测和待验证项。
 4. 画出“用户输入—请求—服务端—响应”的简图。
 
+## 离线替代：从源码建立入口清单
+
+创建一个只含虚构接口的静态页面：
+
+```bash
+mkdir -p /tmp/ctf101-recon
+printf '<!-- training build -->\n<script src="app.js"></script>\n' > /tmp/ctf101-recon/index.html
+printf 'fetch("/api/profile?id=demo").then(r => r.json())\n' > /tmp/ctf101-recon/app.js
+printf 'User-agent: *\nDisallow: /training-notes/\n' > /tmp/ctf101-recon/robots.txt
+python3 -m http.server 8082 --bind 127.0.0.1 --directory /tmp/ctf101-recon
+```
+
+在另一终端收集证据：
+
+```bash
+curl -s http://127.0.0.1:8082/
+curl -s http://127.0.0.1:8082/app.js
+curl -s http://127.0.0.1:8082/robots.txt
+```
+
+整理成“来源、原文、可以确认的事实、仍待验证的推测”四列。`robots.txt` 中出现路径不代表你获得访问任何真实站点的授权。结束时按 `Ctrl+C` 停止服务。
+
+预期证据至少包括 HTML 注释、JavaScript 中的虚构接口和 `robots.txt` 路径三项；不能仅写“发现隐藏页面”。
+
 ## 检查点
 
 每条发现都应附带来源，例如“脚本第 X 行调用了 `/api/profile`”，而不是只写“这里可能有接口”。
@@ -58,6 +86,10 @@ updated_at: 2026-07-30
 - 一上来就跑大量工具：先人工理解正常功能。
 - 把错误文本全部当事实：错误可能经过包装，也可能故意误导。
 - 线索太多：围绕题目目标筛选能被验证的信息。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

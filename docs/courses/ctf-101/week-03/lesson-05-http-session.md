@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 5 节：HTTP、Cookie 与 Session
 
 > Web · 95 分钟 · 浏览器开发者工具
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,51 @@ HTTP 本身不记得上一次请求。应用为了保持登录状态，会让客
 3. 比较登录前后的 Cookie 或授权字段。
 4. 退出登录后重放旧请求，观察服务端如何处理。
 
+## 离线替代：读取请求与 Cookie
+
+先使用仓库提供的本地应用完成可复现实验：
+
+```bash
+uv run python labs/ctf-101/web/training_app.py
+```
+
+另开终端保存教学 Cookie 并访问个人资料：
+
+```bash
+curl -i -c /tmp/ctf101-cookie.txt 'http://127.0.0.1:8081/login?user=alice'
+curl -i -b /tmp/ctf101-cookie.txt http://127.0.0.1:8081/profile
+```
+
+下面的精简版本用于课堂解释请求头。保存为 `local_http.py`；它只在本机回显请求，不实现真实登录：
+
+```python
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        cookie = self.headers.get("Cookie", "(none)")
+        body = f"path={self.path}\ncookie={cookie}\n".encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Set-Cookie", "training_session=demo; HttpOnly; SameSite=Lax")
+        self.end_headers()
+        self.wfile.write(body)
+
+
+HTTPServer(("127.0.0.1", 8081), Handler).serve_forever()
+```
+
+启动后，在另一个终端比较：
+
+```bash
+python3 local_http.py
+curl -i http://127.0.0.1:8081/profile
+curl -i -H 'Cookie: training_session=demo' http://127.0.0.1:8081/profile
+```
+
+标出 `Cookie` 请求头和 `Set-Cookie` 响应头。示例 Cookie 只是教学文本，不能证明用户已登录；真实应用仍须在服务端检查会话和权限。按 `Ctrl+C` 停止服务，并删除 `/tmp/ctf101-cookie.txt`。
+
 ## 检查点
 
 你应能指出“浏览器保存了什么”和“服务端依据什么做权限判断”不是同一个问题。
@@ -58,6 +107,10 @@ HTTP 本身不记得上一次请求。应用为了保持登录状态，会让客
 - 找不到请求：关闭过滤条件并刷新页面。
 - 把 Cookie 等同于密码：Cookie 只是容器，内容和安全属性取决于应用设计。
 - 重放结果不同：检查会话是否过期、请求中是否有一次性字段。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

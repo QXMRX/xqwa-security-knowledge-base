@@ -4,7 +4,7 @@ audience: 全体成员
 status: stable
 owner: QXMRX
 review_cycle: quarterly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # XQWA Security Knowledge Base
@@ -31,15 +31,17 @@ updated_at: 2026-07-30
 - AI Review 说明。
 - 许可证建议。
 
-当前已加入 [CTF 网络安全实战基础](courses/ctf-101/index.md) 的完整 16 周、32 节课程讲义、Reveal.js 课件和题目平台规划。后续会逐步补充可运行实验、练习题和检索问答能力。当前 Pages 阅读界面已使用 Docsify 组装并通过 GitHub Actions 部署。
+当前已加入 [CTF 网络安全实战基础](courses/ctf-101/index.md) 的完整 16 周、32 节课程讲义、
+Reveal.js 课件、BUUCTF 优先题单和可公开访问的离线实验源码。教师应在课前确认平台题目可用；
+平台不可用时切换到同主题离线实验。Pages 阅读界面由 Docsify 组装并通过 GitHub Actions 部署。
 
 ## 协作要求
 
 所有内容修改必须通过 Pull Request。提交前请运行：
 
 ```bash
-python scripts/check_all.py
-mkdocs build --strict
+uv run python scripts/check_all.py
+uv run mkdocs build --strict
 ```
 
 AI 可以辅助检查和建议，但最终审核、批准和合并必须由人工维护者完成。

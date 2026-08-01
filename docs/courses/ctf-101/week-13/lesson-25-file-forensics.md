@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 25 节：文件格式与隐藏信息
 
 > Misc / Forensics · 95 分钟 · 离线文件
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,32 @@ updated_at: 2026-07-30
 3. 观察文件尾、容器结构和嵌入对象线索。
 4. 提取目标并再次识别，记录完整证据链。
 
+## 离线替代：保留原件并分析副本
+
+优先下载课前核验的 BUUCTF Misc 题附件。平台不可用时，运行 `uv run python labs/ctf-101/generate_assets.py`，然后进入 `labs/ctf-101/generated/`。下列命令从该目录执行，先建立工作副本：
+
+```bash
+mkdir -p work
+sha256sum evidence/sample.bin | tee work/original.sha256
+cp --preserve=timestamps evidence/sample.bin work/sample-copy.bin
+file work/sample-copy.bin
+stat work/sample-copy.bin
+exiftool work/sample-copy.bin
+xxd -l 64 work/sample-copy.bin
+tail -c 64 work/sample-copy.bin | xxd
+```
+
+如果 `file` 判断为 ZIP、PNG 或其他容器，再选对应工具：
+
+```bash
+unzip -l work/sample-copy.bin
+binwalk work/sample-copy.bin
+```
+
+不要一开始就批量提取或改写原件。每次操作记录“命令、输入文件摘要、输出路径、观察”。若工具缺失，保存错误信息并使用 `file`、`xxd` 等基础工具完成最低分析。
+
+预期 `file` 将离线 `sample.bin` 识别为 ZIP 容器，`unzip -l` 列出两个教学文件。结束后运行生成器的 `--clean` 选项清理仓库内生成资产，个人分析记录另行保留。
+
 ## 检查点
 
 每次提取都应说明依据：哪个结构、偏移或元数据让你决定继续。
@@ -58,6 +88,10 @@ updated_at: 2026-07-30
 - 直接修改原文件：始终保留原始样本。
 - 扩展名与结构冲突：优先相信结构证据。
 - 工具输出很多：围绕题目目标筛选相关项。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

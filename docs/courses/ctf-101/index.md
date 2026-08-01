@@ -29,13 +29,19 @@ updated_at: 2026-07-30
 
 开始前，请阅读：
 
-- [课程学习指南](learning-guide.md)
-- [视觉与内容标准](art-direction.md)
-- [题目与平台规划](platform-plan.md)
-- [第 1 节：什么是 CTF](week-01/lesson-01-ctf.md)
-- [第 2 节：Linux 与终端基础](week-01/lesson-02-linux.md)
+- [课程学习指南](/courses/ctf-101/learning-guide.md)
+- [视觉与内容标准](/courses/ctf-101/art-direction.md)
+- [题目与平台规划](/courses/ctf-101/platform-plan.md)
+- [BUUCTF 优先实验题单](/courses/ctf-101/buuctf-labs.md)
+- [远程授课指南](/courses/ctf-101/remote-teaching.md)
+- [教师授课手册](/courses/ctf-101/instructor-guide.md)
+- [分方向学习资源](/courses/ctf-101/resources.md)
+- [第 1 节：什么是 CTF](/courses/ctf-101/week-01/lesson-01-ctf.md)
+- [第 2 节：Linux 与终端基础](/courses/ctf-101/week-01/lesson-02-linux.md)
 
-全部 32 节讲义和对应 Reveal.js 课件已经按周组织，可从网站侧边栏或[课程课件目录](../../slides/ctf-101/index.html)进入。课程允许按方向跳读，但第一次参加时建议先完成第 1—4 节通用基础。
+全部 32 节讲义和对应 Reveal.js 课件已经按周组织，可从网站侧边栏或[可搜索的幻灯片索引](/courses/ctf-101/slides.md)进入。课程允许按方向跳读，但第一次参加时建议先完成第 1—4 节通用基础。
+
+在 Docsify 中打开任意一节讲义，页面顶部可直接切换到该节幻灯片；幻灯片右上角也能返回详细讲义。两者分工明确：讲义保存完整解释、步骤和资源，幻灯片只保留课堂主线、提问与演示提示。
 
 ## 学习地图
 

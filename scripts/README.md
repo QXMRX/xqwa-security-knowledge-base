@@ -8,6 +8,8 @@
 - `check_markdown.py`：检查 Markdown 文件是否为空、是否有一级标题、是否存在行尾空格。
 - `check_metadata.py`：检查 `docs/` 页面是否包含必需维护元数据。
 - `check_security_content.py`：检查疑似真实密钥、高风险命令和指向公网目标的攻击工具示例。
+- `check_course_sync.py`：检查 CTF 101 的 32 份讲义、课件和关联清单是否齐全。
+- `check_course_content.py`：检查 32 节讲义是否包含实验选择、命令、预期结果、清理方式、BUUCTF 入口和可复现离线材料。
 - `build_pages_site.py`：组装 Docsify GitHub Pages 静态目录。
 - `ai_review.py`：构造 AI Review 上下文，并在提供密钥时调用 DeepSeek API 生成审核报告。
 - `common.py`：共享文件遍历、UTF-8 读取和检查结果输出逻辑。

@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 12 节：古典密码与 XOR
 
 > Crypto · 95 分钟 · 模式与脚本
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -37,6 +41,41 @@ updated_at: 2026-07-30
 3. 对重复密钥 XOR 观察周期和已知前缀。
 4. 为脚本增加结果评分或人工筛选说明。
 
+## 实操代码：枚举 Caesar 与验证 XOR
+
+```python
+import string
+
+
+def caesar(text: str, shift: int) -> str:
+    alphabet = string.ascii_lowercase
+    result = []
+    for char in text.lower():
+        result.append(alphabet[(alphabet.index(char) - shift) % 26] if char in alphabet else char)
+    return "".join(result)
+
+
+for shift in range(26):
+    candidate = caesar("iodj{fdhvdu}", shift)
+    if "flag{" in candidate or "ctf" in candidate:
+        print(shift, candidate)
+
+
+def xor_bytes(data: bytes, key: bytes) -> bytes:
+    return bytes(value ^ key[index % len(key)] for index, value in enumerate(data))
+
+
+plain = b"flag{xor_is_reversible}"
+key = b"KEY"
+cipher = xor_bytes(plain, key)
+print(cipher.hex())
+assert xor_bytes(cipher, key) == plain
+```
+
+枚举只是生成候选，仍要解释为何候选符合语言、格式和上下文。XOR 示例使用明确给出的教学密钥；不要把短重复密钥当作真实加密方案。
+
+本节脚本只在内存中处理教学文本，无需额外清理。
+
 ## 检查点
 
 脚本输出一百个候选不算分析完成；还需要说明为什么某个候选更符合题目约束。
@@ -58,6 +97,10 @@ updated_at: 2026-07-30
 - 只看最终明文：保留密钥、输入格式和筛选过程。
 - 混淆字符串与整数 XOR：先明确数据如何转为字节。
 - 暴力枚举无边界：先使用题目结构缩小空间。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 

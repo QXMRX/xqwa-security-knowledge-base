@@ -1,0 +1,10 @@
+GET /profile?id=alice HTTP/1.1
+Host: 127.0.0.1:8081
+Cookie: training_session=alice
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Set-Cookie: training_session=alice; HttpOnly; SameSite=Lax
+
+{"id":"alice","role":"member"}

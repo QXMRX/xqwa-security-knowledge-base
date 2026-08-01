@@ -6,6 +6,7 @@
     <meta name="description" content="面向网络安全社团的教学资料库">
     <title>XQWA Security Knowledge Base</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
+    <link rel="stylesheet" href="assets/css/docsify-course.css">
     <style>
       :root {
         --theme-color: #2563eb;
@@ -53,13 +54,17 @@
   </head>
   <body class="loading">
     <div id="app"></div>
+    <script src="slides/ctf-101/assets/js/course-links.js"></script>
     <script>
       window.$docsify = {
         name: 'XQWA Security Knowledge Base',
         repo: 'QXMRX/xqwa-security-knowledge-base',
         homepage: 'index.md',
         loadSidebar: true,
+        loadNavbar: true,
+        mergeNavbar: true,
         alias: {
+          '/courses/ctf-101/': '/courses/ctf-101/index.md',
           '/.*/_sidebar.md': '/_sidebar.md'
         },
         auto2top: true,
@@ -75,7 +80,36 @@
         plugins: [
           function stripFrontMatter(hook) {
             hook.beforeEach(function(content) {
-              return content.replace(/^---\n[\s\S]*?\n---\n?/, '');
+              const body = content.replace(/^---\n[\s\S]*?\n---\n?/, '');
+              return body.replace(
+                /(\]\([^)\n]*slides\/[^)\n]+\.html(?:\?[^)\n ]+)?)(\))/g,
+                '$1 ":ignore"$2'
+              );
+            });
+          },
+          function lessonActions(hook) {
+            hook.afterEach(function(html, next) {
+              const route = location.hash.replace(/^#\/?/, '');
+              const lessons = window.CTF101_LESSONS || [];
+              const index = lessons.findIndex((path) => `courses/ctf-101/${path}` === route);
+              if (index < 0) {
+                next(html);
+                return;
+              }
+
+              const lesson = String(index + 1).padStart(2, '0');
+              const legacySlides = {
+                '01': 'slides/ctf-101/lesson-01-ctf.html',
+                '02': 'slides/ctf-101/lesson-02-linux.html'
+              };
+              const slides = legacySlides[lesson] || `slides/ctf-101/deck.html?lesson=${lesson}`;
+              next(
+                `<nav class="lesson-actions" aria-label="本节课资源">` +
+                `<span>第 ${index + 1} 节</span>` +
+                `<a class="is-current" href="#/${route}">阅读详细讲义</a>` +
+                `<a href="${slides}" target="_blank" rel="noopener">打开授课幻灯片 ↗</a>` +
+                `</nav>${html}`
+              );
             });
           }
         ]
@@ -83,5 +117,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/plugins/zoom-image.min.js"></script>
   </body>
 </html>

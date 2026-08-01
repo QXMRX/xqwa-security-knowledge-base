@@ -1,0 +1,103 @@
+:root {
+  --course-ink: #0b1020;
+  --course-cyan: #0891b2;
+  --course-cyan-soft: #ecfeff;
+  --course-line: #dbe7ef;
+}
+
+body {
+  background:
+    radial-gradient(circle at 85% 0%, rgba(8, 145, 178, 0.08), transparent 28rem),
+    #fff;
+}
+
+.app-nav {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--course-line);
+  border-radius: 999px;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.35rem 0.7rem;
+}
+
+.markdown-section {
+  line-height: 1.75;
+  max-width: 960px;
+  padding-bottom: 6rem;
+}
+
+.markdown-section h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+
+.markdown-section h2 {
+  border-top: 1px solid var(--course-line);
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+}
+
+.markdown-section blockquote {
+  background: var(--course-cyan-soft);
+  border-left: 4px solid var(--course-cyan);
+  border-radius: 0 12px 12px 0;
+  color: #164e63;
+  padding: 0.8rem 1rem;
+}
+
+.markdown-section table {
+  display: table;
+  width: 100%;
+}
+
+.lesson-actions {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--course-line);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 2rem;
+  padding: 0.75rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 5;
+}
+
+.lesson-actions span {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: auto;
+  padding: 0.45rem;
+}
+
+.lesson-actions a {
+  border: 1px solid var(--course-line);
+  border-radius: 9px;
+  font-size: 0.9rem;
+  font-weight: 650;
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+}
+
+.lesson-actions a:last-child {
+  background: var(--course-ink);
+  border-color: var(--course-ink);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .lesson-actions {
+    position: static;
+  }
+
+  .lesson-actions span {
+    flex-basis: 100%;
+  }
+}

@@ -4,12 +4,16 @@ audience: 计算机系大一新生
 status: review
 owner: QXMRX
 review_cycle: yearly
-updated_at: 2026-07-30
+updated_at: 2026-07-31
 ---
 
 # 第 15 节：程序、编译与二进制
 
 > Reverse · 95 分钟 · 从熟悉的 C 代码出发
+
+## 实验选择
+
+本节优先使用 [BUUCTF 题单](/courses/ctf-101/buuctf-labs.md) 中对应课次的已核验题目。教师须在课前确认题名、附件和动态实例可用；BUUCTF 归档题不可用时，切换到 DASCTF 同知识点题或本讲义的离线替代。课堂只发布题名与授权范围，不发布 Flag、账号或临时实例地址。
 
 ## 本节目标
 
@@ -32,10 +36,48 @@ updated_at: 2026-07-30
 
 ## 课堂主线
 
-1. 编译教师提供的短 C 程序并运行。
+1. 编译仓库中的 `labs/ctf-101/binary/hello_binary.c` 并运行。
 2. 使用 `file`、`strings`、`readelf` 观察文件。
 3. 将提示字符串与源码位置对应起来。
 4. 对去除部分符号后的版本重复观察，比较线索变化。
+
+## 离线替代：从源码到 ELF 画像
+
+仓库已保存同一源码；下列代码用于课堂逐行讲解：
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int check(const char *input) {
+    return strcmp(input, "training") == 0;
+}
+
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        puts("usage: ./hello_binary WORD");
+        return 1;
+    }
+    puts(check(argv[1]) ? "accepted" : "rejected");
+    return 0;
+}
+```
+
+编译并观察：
+
+```bash
+cd labs/ctf-101/binary
+cc -Wall -Wextra -g -O0 hello_binary.c -o hello_binary
+./hello_binary training
+file hello_binary
+strings -n 5 hello_binary | grep -E 'accepted|rejected|training'
+readelf -h hello_binary
+readelf -s hello_binary | grep -E ' main$| check$'
+```
+
+先写出格式、架构、入口行为、关键字符串和符号五项画像，再进入反汇编。只分析 BUUCTF 题目附件、自己编译或仓库提供的文件。
+
+预期 `file` 报告 ELF 可执行文件，`strings` 找到三条教学字符串，`readelf -s` 找到 `main` 与 `check`。实验后运行 `make -C labs/ctf-101/binary clean` 清理构建产物。
 
 ## 检查点
 
@@ -57,7 +99,11 @@ updated_at: 2026-07-30
 
 - 一看到二进制就打开反编译器：先做低成本观察。
 - 把节和段完全等同：本节先理解各自服务文件与装载视角。
-- 运行来源未知程序：只分析课程提供的文件。
+- 运行来源未知程序：只分析 BUUCTF 题目附件、自己编译或仓库提供的文件。
+
+## 延伸资料
+
+- [分方向课程学习资源](/courses/ctf-101/resources.md)
 
 ## 课件
 
