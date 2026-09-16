@@ -91,6 +91,19 @@ shasum -a 256 practices/anti-fraud-campaign/index.html
 - 若后续改用自有域名并启用备案，需注意备案主体与内容性质的一致性；页面一旦加入学校或社团名称，个人备案可能被要求转为单位备案。
 - 不把登录 Cookie、AccessKey、SSH 私钥或控制台密码放进仓库、聊天记录或二维码文案。
 
+## 品牌资产
+
+社团 logo 作为公共品牌资产存放在 `docs/brand/`（发布后位于站点的 `/brand/`），不放在本目录：
+
+- `logo-mark.png`：图形标记（无文字），360×270。
+- `logo-full.png`：完整标识（图形 + “鑫启网安”字标），600×474。
+
+两个文件都是透明背景 PNG，已做过调色板量化（从 128 KB / 67 KB 压到约 19 KB / 10 KB，平色图形看不出差别），可以给任意页面或物料复用。
+
+本页把缩放后的版本以 data URI 内嵌，页面因此仍然是**单文件自包含**的：可以单独交给学校站点或其他托管方，不必附带资源目录。
+
+**注意：不要把资源放进 `docs/assets/`。** `scripts/build_pages_site.py` 先拷贝 `docs/`、再拷贝 `docsify/`，而两者都有 `assets/` 目录，`copy_contents()` 遇到同名目录会先删除目标再拷贝，结果是 `docs/assets/` 整个目录在发布时被静默清空（已实测：站点里 `/assets/` 只剩 `docsify/assets/css/`，放在 `docs/assets/brand/` 的 logo 消失）。这是与本活动无关的既有构建缺陷，建议单独修复：要么合并拷贝，要么在检测到同名冲突时直接报错。
+
 ## 维护方式
 
 1. 改文案：编辑 `practices/anti-fraud-campaign/index.html`。
