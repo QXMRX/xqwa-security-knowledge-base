@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="反诈安全提示：未知二维码不扫描，异常链接不点击，敏感信息不提供。" />
+    <meta name="theme-color" content="#f5f5f7" />
+    <meta property="og:title" content="先停一秒，再做决定｜反诈安全提示" />
+    <meta property="og:description" content="未知二维码不扫描，异常链接不点击，敏感信息不提供。" />
+    <title>先停一秒，再做决定｜反诈安全提示</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23007aff'/%3E%3Cpath d='M16 18h32v8H16zm0 14h32v8H16zm0 14h22v8H16z' fill='white'/%3E%3C/svg%3E" />
+    <style>
+      :root { --ink:#1d1d1f; --muted:#6e6e73; --blue:#007aff; --line:#d2d2d7; --canvas:#f5f5f7; --surface:#fff; --danger:#b42318; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; color:var(--ink); background:var(--canvas); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif; -webkit-font-smoothing:antialiased; }
+      a { color:inherit; }
+      .nav { height:52px; display:flex; justify-content:space-between; align-items:center; padding:0 max(24px,calc((100vw - 1080px)/2)); background:rgba(255,255,255,.78); border-bottom:1px solid rgba(0,0,0,.06); backdrop-filter:saturate(180%) blur(18px); position:sticky; top:0; z-index:2; }
+      .brand { font-size:14px; font-weight:650; letter-spacing:.02em; text-decoration:none; }
+      .nav a:last-child { font-size:13px; color:var(--blue); text-decoration:none; }
+      main { overflow:hidden; }
+      .hero { min-height:600px; display:grid; place-items:center; text-align:center; padding:92px 24px 76px; background:radial-gradient(circle at 50% 2%,#fff 0,#f5f5f7 58%); }
+      .eyebrow { margin:0 0 16px; color:var(--blue); font-size:17px; font-weight:650; letter-spacing:.03em; }
+      h1 { max-width:900px; margin:0; font-size:clamp(3.25rem,8vw,7rem); letter-spacing:-.075em; line-height:.98; font-weight:700; }
+      .hero h1 span { color:var(--blue); }
+      .lede { max-width:620px; margin:28px auto 0; color:var(--muted); font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.55; }
+      .pill { display:inline-flex; gap:8px; align-items:center; margin-top:34px; padding:10px 16px; border-radius:999px; background:#e9f3ff; color:#075eb7; font-size:14px; }
+      .dot { width:8px; height:8px; background:#30d158; border-radius:50%; }
+      .section { max-width:1080px; margin:0 auto; padding:92px 24px; }
+      .section-title { max-width:700px; margin:0 auto 44px; text-align:center; font-size:clamp(2.1rem,5vw,3.7rem); line-height:1.08; letter-spacing:-.055em; }
+      .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+      .card { min-height:272px; padding:29px; border-radius:28px; background:var(--surface); display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 1px 0 rgba(0,0,0,.05); }
+      .number { color:var(--blue); font-size:15px; font-weight:700; }
+      .card h3 { margin:16px 0 10px; font-size:26px; letter-spacing:-.04em; }
+      .card p { margin:0; color:var(--muted); line-height:1.6; font-size:16px; }
+      .card .mark { align-self:flex-end; color:#d2d2d7; font-size:45px; line-height:.6; font-weight:300; }
+      .alert { background:#101113; color:#fff; }
+      .alert-grid { max-width:1080px; margin:0 auto; padding:88px 24px; display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+      .alert .eyebrow { color:#64b5ff; }
+      .alert h2 { margin:0; font-size:clamp(2.25rem,5vw,4rem); letter-spacing:-.06em; line-height:1.06; }
+      .alert p { color:#a1a1a6; line-height:1.65; font-size:17px; }
+      .risk-card { padding:28px; background:#1d1d1f; border:1px solid #353538; border-radius:24px; }
+      .risk-card small { color:#a1a1a6; font-size:13px; }
+      .risk-card h3 { margin:15px 0 9px; font-size:25px; letter-spacing:-.03em; }
+      .risk-card p { margin:0; font-size:15px; }
+      .risk-card a { display:inline-block; margin-top:20px; color:#64b5ff; font-size:14px; text-decoration:none; }
+      .check { text-align:center; }
+      .check .section-title { margin-bottom:14px; }
+      .check > p { max-width:580px; margin:0 auto; color:var(--muted); font-size:17px; line-height:1.6; }
+      .checklist { max-width:680px; margin:34px auto 0; text-align:left; border-radius:24px; overflow:hidden; background:#fff; box-shadow:0 1px 0 rgba(0,0,0,.05); }
+      .item { display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); font-size:17px; line-height:1.45; }
+      .item:last-child { border:0; }
+      .tick { flex:0 0 25px; color:var(--blue); font-weight:700; }
+      .action { margin-top:36px; display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 22px; border:0; border-radius:999px; background:var(--blue); color:#fff; font:600 16px inherit; cursor:pointer; }
+      .action:hover { background:#0071e3; }
+      .notice { display:none; max-width:620px; margin:24px auto 0; padding:16px 20px; border-radius:16px; background:#fff1f0; color:var(--danger); font-size:15px; line-height:1.55; }
+      .notice.show { display:block; }
+      footer { padding:32px 24px 42px; border-top:1px solid var(--line); color:var(--muted); text-align:center; font-size:13px; line-height:1.7; }
+      footer a { color:var(--blue); }
+      @media (max-width:700px) { .hero { min-height:540px; padding-top:72px; } .cards,.alert-grid { grid-template-columns:1fr; } .alert-grid { gap:30px; padding-top:66px; padding-bottom:66px; } .section { padding-top:66px; padding-bottom:66px; } .card { min-height:220px; } }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="主导航"><a class="brand" href="#top">安全提示</a><a href="#verify">遇到可疑情况怎么办</a></nav>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">反诈宣传活动 · 网络安全提示</p>
+          <h1 id="hero-title">先停一秒。<br><span>再做决定。</span></h1>
+          <p class="lede">未知二维码不扫描，异常链接不点击，敏感信息不提供。给自己十秒钟核验，可能避开一次精心设计的骗局。</p>
+          <div class="pill"><i class="dot" aria-hidden="true"></i> 安全习惯，从一次暂停开始</div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="three-title">
+        <h2 class="section-title" id="three-title">面对陌生信息，只记住三件事。</h2>
+        <div class="cards">
+          <article class="card"><div><div class="number">01</div><h3>不扫描</h3><p>抽奖、领券、补贴、快递异常等陌生二维码，都可能把你带往仿冒页面或触发风险下载。</p></div><div class="mark" aria-hidden="true">×</div></article>
+          <article class="card"><div><div class="number">02</div><h3>不轻信</h3><p>自称客服、平台、老师或“官方人员”的来电和私信，先通过官方渠道独立核验。</p></div><div class="mark" aria-hidden="true">?</div></article>
+          <article class="card"><div><div class="number">03</div><h3>不透露</h3><p>验证码、密码、身份证号、银行卡信息和屏幕共享权限，都不应提供给陌生人。</p></div><div class="mark" aria-hidden="true">—</div></article>
+        </div>
+      </section>
+
+      <section class="alert" aria-labelledby="alert-title">
+        <div class="alert-grid">
+          <div><p class="eyebrow">风险提示 · 及时更新</p><h2 id="alert-title">漏洞不是遥远的技术新闻。</h2><p>已公开的高危漏洞（常被称为“1day”）一旦被攻击者利用，可能造成设备被植入恶意程序、账号被接管、文件被窃取或被加密勒索。保持系统和常用应用更新，是每个人都能做到的防护。</p></div>
+          <aside class="risk-card" aria-label="漏洞预警说明"><small>发布前核验 · 示例预警位</small><h3>CVE 预警请以权威通告为准</h3><p>发布活动前，请由负责老师或技术人员从厂商安全公告、国家信息安全漏洞库或 CISA KEV 目录中核验受影响产品、补丁版本和更新时间；不要转发未证实的“紧急漏洞”消息。</p><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noreferrer">查看 CISA 已知在野利用漏洞目录 ↗</a></aside>
+        </div>
+      </section>
+
+      <section class="section check" id="verify" aria-labelledby="check-title">
+        <h2 class="section-title" id="check-title">觉得可疑时，这样做。</h2>
+        <p>先中断操作，再向可信的人或官方渠道确认。不要因为“马上过期”“不处理就追责”而仓促决定。</p>
+        <div class="checklist" role="list">
+          <div class="item" role="listitem"><span class="tick">✓</span><span>关闭网页或停止转账，不继续输入任何信息。</span></div>
+          <div class="item" role="listitem"><span class="tick">✓</span><span>从应用商店或浏览器自行进入官方 App、官网或客服电话，不点对方发来的入口。</span></div>
+          <div class="item" role="listitem"><span class="tick">✓</span><span>如已转账或泄露信息，保留聊天、订单和转账记录，并及时联系银行、支付平台和当地公安机关。</span></div>
+        </div>
+        <button class="action" type="button" id="help-button">我需要立即核验</button>
+        <p class="notice" id="help-notice" role="status">如正遭遇诈骗或已造成损失，请立即拨打 110 或前往就近公安机关报案；涉及账户资金时，同时联系对应银行或支付平台的官方客服。不要把验证码、密码或远程控制权限交给任何人。</p>
+      </section>
+    </main>
+    <footer>本页面用于反诈宣传，不替代执法机关、金融机构或软件厂商的正式公告。<br>活动发布前，请更新“示例预警位”并保留权威来源链接。</footer>
+    <script>
+      document.getElementById('help-button').addEventListener('click', function () {
+        document.getElementById('help-notice').classList.add('show');
+        document.getElementById('help-notice').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    </script>
+  </body>
+</html>
