@@ -8,6 +8,7 @@ on:
       - "docs/**"
       - "docsify/**"
       - "labs/ctf-101/**"
+      - "practices/**"
       - "scripts/build_pages_site.py"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:

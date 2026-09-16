@@ -74,6 +74,27 @@ def copy_public_labs(root: Path, destination: Path) -> None:
         raise RuntimeError(f"refusing to publish generated or compiled lab files: {', '.join(leaked)}")
 
 
+PUBLISHED_PRACTICE_FILES = {
+    "anti-fraud-campaign": ("index.html",),
+}
+
+
+def copy_practice_pages(root: Path, destination: Path) -> None:
+    """Publish practice pages without their repository-side notes."""
+    for name, filenames in PUBLISHED_PRACTICE_FILES.items():
+        source = root / "practices" / name
+        if not source.is_dir():
+            raise RuntimeError(f"required practice directory does not exist: {source}")
+
+        target = destination / "practices" / name
+        target.mkdir(parents=True, exist_ok=True)
+        for filename in filenames:
+            item = source / filename
+            if not item.is_file():
+                raise RuntimeError(f"required practice page does not exist: {item}")
+            shutil.copy2(item, target / filename)
+
+
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -103,6 +124,7 @@ def main() -> int:
     copy_contents(root / "docs", output)
     copy_contents(root / "docsify", output)
     copy_public_labs(root, output)
+    copy_practice_pages(root, output)
 
     print(f"Docsify Pages site written to {output}")
     return 0

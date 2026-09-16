@@ -4,7 +4,7 @@ audience: 维护者
 status: stable
 owner: QXMRX
 review_cycle: quarterly
-updated_at: 2026-07-29
+updated_at: 2026-09-16
 ---
 
 # 目录设计
@@ -18,6 +18,8 @@ updated_at: 2026-07-29
 `labs/` 存放可复现实验。实验必须说明运行环境、授权边界、启动方式、验证方式和清理方式。
 
 `exercises/` 存放练习题、复盘题和阶段测验。练习应服务于教学目标，而不是只堆命令或答案。
+
+`practices/` 存放社团对外活动的实践记录与活动资产，例如反诈宣传单页。目录内既放对外发布的页面源文件，也放这次活动的背景、发布链路选择依据和投放前核验方法。需要发布到网站的活动页面由 `scripts/build_pages_site.py` 显式映射，不直接放进 `docs/`。
 
 `templates/` 存放模板。后续可以加入课程模板、实验模板、Pull Request 审核模板和 AI Review 提示词模板。
 
